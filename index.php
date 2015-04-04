@@ -1,4 +1,4 @@
-<html>
+<html lang="en-us" data-ng-app="colorhelper">
 
     <head>
 
@@ -10,16 +10,20 @@
 
     </head>
 
-    <body>
+    <body data-ng-controller="Controller">
 
         <!-- Header -->
-        <header>
+        <header id="main-header">
 
-            <div class="color"></div>
-            <div class="color"></div>
-            <div class="color"></div>
-            <div class="color"></div>
-            <div class="color"></div>
+            <!-- Track by $index to avoid duplicate key error https://docs.angularjs.org/error/ngRepeat/dupes -->
+            <div data-ng-repeat="color in palette.colors track by $index"
+                 data-ng-style="{
+                                    'background-color': color,
+                                    'width': headerColumnWidth
+                                }"
+                 class="color">
+
+            </div>
 
         </header>
 
@@ -53,7 +57,8 @@
         </div>
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-        <script src="resource/javascript/Painter.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+        <script src="resource/javascript/app.js"></script>
 
     </body>
 

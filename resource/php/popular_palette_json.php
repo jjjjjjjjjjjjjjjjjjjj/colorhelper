@@ -1,6 +1,7 @@
 <?php
 
 # Workaround for API not supporting JSONP??
+#TODO:: same origin check
 
 # Get the top 30 palettes
 $palettes = file_get_contents( 'http://www.colourlovers.com/api/palettes/top?format=json&numResults=30' );

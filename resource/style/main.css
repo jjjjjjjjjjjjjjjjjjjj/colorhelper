@@ -1,13 +1,194 @@
-header#main-header {
+* {
 
-    width:          1080px;
-    margin:         0 auto;
+    margin:                 0;
+    padding:                0;
 
 }
 
+body {
+
+    background-color:       #f8f8f8;
+    font-family:            'Open Sans', 'ヒラギノ角ゴ Pro W3', 'Hiragino Kaku Gothic Pro',Osaka, 'メイリオ', Meiryo, 'ＭＳ Ｐゴシック', 'MS PGothic', sans-serif;
+
+}
+
+a,
+a:active,
+a:visited,
+h1,
+h2,
+h3,
+p {
+
+    text-decoration:        none;
+    color:                  #1a1a1a;
+    margin:                 0;
+    padding:                0;
+
+}
+
+li {
+
+    list-style-type:        none;
+
+}
+
+#nav {
+
+    background-color:       #ffffff;
+    position:               fixed;
+    top:                    0;
+    left:                   0;
+    width:                  100%;
+    height:                 50px;
+    border-bottom-width:    2px;
+    border-bottom-style:    solid;
+
+}
+
+.inner {
+
+    width:                  1080px;
+    margin:                 0 auto;
+
+}
+
+
+
+#nav .inner h1 {
+
+    float:                  left;
+    line-height:            50px;
+    height:                 50px;
+    font-size:              22px;
+    font-weight:            600;
+    margin-right:           25px;
+
+}
+
+#nav #refresh {
+
+    margin-top:             10px;
+    width:                  30px;
+    height:                 30px;
+
+}
+
+#nav ul {
+
+    float:                  left;
+
+}
+
+#nav ul li {
+
+    float:                  left;
+    width:                  80px;
+    text-align:             center;
+    height:                 100%;
+
+
+}
+
+#nav ul li:first-child {
+
+
+}
+
+#status-bar {
+
+    position:               fixed;
+    top:                    52px;
+    left:                   0;
+    width:                  100%;
+    height:                 35px;
+    font-size:              0.9em;
+    color:                  #1a1a1a;
+    line-height:            35px;
+    text-align:             center;
+
+}
+
+#status-bar .close {
+
+    right:                  0;
+    display:                inline-block;
+    float:                  right;
+
+}
+
+#status-bar #close-icon {
+
+    width:                  31px;
+    height:                 31px;
+    padding-top:            2px;
+    opacity:                0.5;
+    -moz-opacity:           0.5;
+
+}
+
+
+
+#status-bar .status-title {
+
+    font-weight:            700;
+
+}
+
+#main-wrapper {
+
+    margin-top:             90px;
+    background:             #ffffff;
+    height:                 800px;
+
+}
+
+
+#main-header {
+
+    position:               relative;
+    height:                 300px;
+    margin:                 0 auto;
+    background:             #cecece;
+    text-align:             center;
+
+}
+
+#main-header #loading {
+
+    position:               absolute;
+    top:                    calc( 50% - 50px ); /* vertical center */
+    z-index :               1; /* place beneath color palette */
+
+}
+
+
 .color {
 
-    height:         300px;
-    float:          left;
+    height:                 300px;
+    display:                inline-block;
+    position:               relative;
+    z-index:                2; /* place above loading symbol */
+
+}
+
+#palette-content {
+
+    position:               relative;
+    padding:                0px 30px;
+
+}
+
+#palette-content #palette-heading {
+
+    position:               absolute;
+    top:                    -30px;
+    left:                   5%;
+    background:             #ffffff;
+    z-index:                3;
+    padding:                15px 25px;
+
+    font-size:              1.3em;
+    font-weight:            600;
 
 }

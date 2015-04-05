@@ -1,6 +1,9 @@
+/*
+ * Main controller
+ */
+
 colorhelper.controller( 'MainController', function MainController( $scope, $http ) {
 
-    $scope.palette = {};
     $scope.app = {
 
         author: "Janne Klouman",
@@ -21,7 +24,7 @@ colorhelper.controller( 'MainController', function MainController( $scope, $http
 
     };
 
-    // Grab JSON / update scope / calls paint()
+    // Grab JSON / update scope
     $scope.update = function( paletteType ) {
 
         // Begin operation
@@ -34,8 +37,11 @@ colorhelper.controller( 'MainController', function MainController( $scope, $http
 
         };
 
+        // Talk to API
         $http.get( '../resource/php/' + paletteType + '_palette_json.php')
             .success( function( response ) {
+
+                // TODO: preload next random color, or all of them if paletteType == popular
 
                 // Response comes encapsulated in array
                 $scope.palette = response[0];
@@ -43,8 +49,11 @@ colorhelper.controller( 'MainController', function MainController( $scope, $http
                 // Uncomment for full list of properties
                 // console.log( $scope.palette );
 
-                // Update header column width
-                $scope.headerColumnWidth = $( '#main-header' ).width() / $scope.palette.colors.length + 'px';
+                // Update header column width, uses pixels
+                var headerPixelWidth = $( '#main-header' ).width(),
+                    columnPixelWidth =  headerPixelWidth / $scope.palette.colors.length;
+
+                $scope.headerColumnWidth = (columnPixelWidth / headerPixelWidth) * 100 + "%";
 
                 // Set colorscheme
                 $scope.detailsColor = $scope.palette.colors[ 0 ];
@@ -56,13 +65,14 @@ colorhelper.controller( 'MainController', function MainController( $scope, $http
                 // $( '.svg' ).css( 'fill', '#' + $scope.detailsColor );
 
             })
-            .error( function() {
+            .error( function( e, i ) {
 
+                // Set status (displays the error)
                 $scope.status = {
 
                     active: 1,
                     title: l( '%status.api.error.title' ),
-                    message: l( '%status.api.error.message' ),
+                    message: l( '%status.api.error.message' ) + ' (' + i + ')',
                     background: '#CD8682'
 
                 }

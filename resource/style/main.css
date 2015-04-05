@@ -48,7 +48,8 @@ li {
 
 .inner {
 
-    width:                  1080px;
+    width: 80%;
+    max-width:              1080px;
     margin:                 0 auto;
 
 }
@@ -175,7 +176,7 @@ li {
 #palette-content {
 
     position:               relative;
-    padding:                0px 30px;
+    padding:                0 30px;
 
 }
 

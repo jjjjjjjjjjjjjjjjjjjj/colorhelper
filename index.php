@@ -24,10 +24,10 @@
                 <!-- Track by $index to avoid duplicate key error https://docs.angularjs.org/error/ngRepeat/dupes -->
                 <div data-ng-repeat="color in palette.colors track by $index"
                      data-ng-style="
-                     {
-                        'background-color': color,
-                        'width': headerColumnWidth
-                     }"
+                         {
+                            'background-color': color,
+                            'width': headerColumnWidth
+                         }"
                      class="color">
                 </div>
 

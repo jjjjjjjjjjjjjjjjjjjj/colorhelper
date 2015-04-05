@@ -11,7 +11,7 @@
 -
     </head>
 
-    <body data-ng-controller="Controller">
+    <body data-ng-controller="MainController">
 
         <!-- Content wrap -->
         <div role="main" id="main-wrapper" class="inner">
@@ -61,15 +61,29 @@
 
                 <h1 id="page-heading"><a data-ng-click="update('random')" href="" data-ng-style="{ 'color': detailsColor }">
 
-                    {{ pageName }}
+                    {{ app.name }}
 
                 </a></h1>
 
-                <ul>
+                <!-- Menu
+                <ul data-ng-controller="NavigationController">
 
-                    <li data-ng-repeat="item in menu"><a data-ng-href="{{ item.href }}">{{ item.label }}</a></li>
+                    <li data-ng-repeat="item in menu">
+                        <a data-ng-href="{{ item.href }}">
+                            {{ item.label }}
+                        </a>
 
-                </ul>
+                        <!-- Submenu
+                        <ul data-ng-show="item.subMenu">
+                            <li data-ng-repeat="child in item.subMenu">
+                                <a data-ng-href="{{ child.href }}">
+                                    {{ child.label }}
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                </ul> -->
 
             </div>
 
@@ -81,7 +95,7 @@
             <div class="inner">
 
                 <span class="status-title">{{ status.title }}</span> {{ status.message }}
-                <a class="close" href="close"><img id="close-icon" src="resource/graphic/close-status.png" alt=""/></a>
+                <a class="close nolink" href="close"><img id="close-icon" src="resource/graphic/close-status.png" alt=""/></a>
 
             </div>
 
@@ -91,8 +105,9 @@
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
         <script src="resource/javascript/l10n.js"></script>
         <script src="resource/javascript/localizations.js"></script>
-        <script src="resource/javascript/main.js"></script>
         <script src="resource/javascript/app.js"></script>
+        <script src="resource/javascript/controller/main.js"></script>
+        <script src="resource/javascript/controller/navigation.js"></script>
 
     </body>
 

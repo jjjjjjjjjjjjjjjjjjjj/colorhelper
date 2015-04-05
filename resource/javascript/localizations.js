@@ -1,9 +1,9 @@
 String.toLocaleString({
     "se": {
 
-        "%page.name": "färghjälparen",
-        "%page.title": "färghjälparen, färgschemeinspiration",
-        "%page.description": "En enkel webbapplikation för att hjälpa dig hitta ett färgschema som passar ditt projekt.",
+        "%app.name": "färghjälparen",
+        "%app.title": "färghjälparen, färgschemeinspiration",
+        "%app.description": "En enkel webbapplikation för att hjälpa dig hitta ett färgschema som passar ditt projekt.",
 
         "%status.api.title": "Hämtar färger...",
         "%status.api.message": "Väntar på svar från API.",
@@ -13,9 +13,9 @@ String.toLocaleString({
     },
     "en": {
 
-        "%page.name": "colorhelper",
-        "%page.title": "colorhelper, colorscheme inspiration",
-        "%page.description": "A simple web application to help you find a colorscheme that suits you",
+        "%app.name": "colorhelper",
+        "%app.title": "colorhelper, colorscheme inspiration",
+        "%app.description": "A simple web application to help you find a colorscheme that suits you",
 
         "%status.api.title": "Getting colors...",
         "%status.api.message": "Waiting for results from the API.",
@@ -25,9 +25,9 @@ String.toLocaleString({
     },
     "ja": {
 
-        "%page.name": "カラーヘルパー",
-        "%page.title": "カラーヘルパー、配色のインスピレーション",
-        "%page.description": "カラーヘルパーを使うとちょうどいい配色を簡単で見つけます。",
+        "%app.name": "カラーヘルパー",
+        "%app.title": "カラーヘルパー、配色のインスピレーション",
+        "%app.description": "カラーヘルパーを使うとちょうどいい配色を簡単で見つけます。",
 
         "%status.api.title": "色をゲットしていまーす．．．",
         "%status.api.message": "APIからの結果を待ちます。",

@@ -1,75 +1,62 @@
+/*
+ * Our app
+ */
 var colorhelper = angular.module( 'colorhelper', [] );
 
-colorhelper.controller( 'Controller', function Controller( $scope, $http ) {
+/*
+ * document.onload
+ */
+$(function() {
 
-    $scope.palette          = {};
-    $scope.pageName         = l( '%page.name' );
-    $scope.pageTitle        = l( '$page.title' );
-    $scope.pageDescription  = l( '$page.description' );
-    $scope.status           = {
+    // Remove anchor default functionality
+    $( '.nolink' ).on( 'click', function() {
 
-        active:     0,
-        title:      '',
-        messsage:   '',
-        background: ''
+        return false;
 
-    };
-
-    $scope.menu = {
-
-    };
-
-    // Grab JSON / update scope / calls paint()
-    $scope.update = function( paletteType ) {
-
-        // Begin operation
-        $scope.status = {
-
-            active:     1,
-            title:      l( '%status.api.title' ),
-            message:    l( '%status.api.message' ),
-            background: '#fffde7'
-
-        };
-
-        $http.get( '../resource/php/' + paletteType + '_palette_json.php')
-            .success( function( response ) {
-
-                // Response comes encapsulated in array
-                $scope.palette = response[0];
-
-                // Uncomment for full list of properties
-                // console.log( $scope.palette );
-
-                // Update header column width
-                $scope.headerColumnWidth = $( '#main-header' ).width() / $scope.palette.colors.length + 'px';
-
-                // Set colorscheme
-                $scope.detailsColor = $scope.palette.colors[ 0 ];
-
-                // Operations done, set status to inactive
-                $scope.status.active = 0;
-
-                // Workaround for filling svg, unable to bind because cssableSVG() in main.js
-                // $( '.svg' ).css( 'fill', '#' + $scope.detailsColor );
-
-            })
-            .error( function() {
-
-                $scope.status = {
-
-                    active:     1,
-                    title:      l( '%status.api.error.title' ),
-                    message:    l( '%status.api.error.message' ),
-                    background: '#CD8682'
-
-                }
-
-            });
-
-    };
-
-    // TODO: Replace random with current pref
-    $scope.update( 'random' );
+    });
 
 });
+
+/*
+ * Shorthand for l10n.js localization function
+ */
+var l = function (string) {
+    return string.toLocaleString();
+};
+
+/*
+ * Replace all SVG images with inline SVG
+ * Taken from http://stackoverflow.com/a/11978996/2298963
+ */
+var cssableSVG = function() {
+
+    jQuery('img.svg').each(function(){
+        var $img = jQuery(this);
+        var imgID = $img.attr('id');
+        var imgClass = $img.attr('class');
+        var imgURL = $img.attr('src');
+
+        jQuery.get(imgURL, function(data) {
+            // Get the SVG tag, ignore the rest
+            var $svg = jQuery(data).find('svg');
+
+            // Add replaced image's ID to the new SVG
+            if(typeof imgID !== 'undefined') {
+                $svg = $svg.attr('id', imgID);
+            }
+            // Add replaced image's classes to the new SVG
+            if(typeof imgClass !== 'undefined') {
+                $svg = $svg.attr('class', imgClass+' replaced-svg');
+            }
+
+            // Remove any invalid XML tags as per http://validator.w3.org
+            $svg = $svg.removeAttr('xmlns:a');
+
+            // Replace image with new SVG
+            $img.replaceWith($svg);
+
+        }, 'xml');
+
+    });
+
+};

@@ -9,9 +9,15 @@ colorhelper.controller( 'MainController', function MainController( $scope, $http
         author: "Janne Klouman",
         version: "1.0 alpha",
         name: l( '%app.name' ),
-        title: l( '%app.title'),
+        title: l( '%app.title' ),
         description: l( '$page.description' ),
         GitHubURL: "https://github.com/janneklouman/colorhelper"
+
+    };
+
+    $scope.colorscheme = {
+
+        details: "#e1e1e1"
 
     };
 
@@ -23,6 +29,7 @@ colorhelper.controller( 'MainController', function MainController( $scope, $http
         background: ''
 
     };
+
 
     // Grab JSON / update scope
     $scope.update = function( paletteType ) {
@@ -41,13 +48,22 @@ colorhelper.controller( 'MainController', function MainController( $scope, $http
         $http.get( '../resource/php/' + paletteType + '_palette_json.php')
             .success( function( response ) {
 
-                // TODO: preload next random color, or all of them if paletteType == popular
-
                 // Response comes encapsulated in array
                 $scope.palette = response[0];
 
+                // Gather all metadata in object for easy iteration
+                $scope.palette.meta = {
+
+                    rank: $scope.palette.rank,
+                    views: $scope.palette.numViews,
+                    hearts: $scope.palette.numHearts,
+                    comments: $scope.palette.numComments
+
+                };
+
                 // Uncomment for full list of properties
                 // console.log( $scope.palette );
+                console.log( $scope.palette.meta );
 
                 // Update header column width, uses pixels
                 var headerPixelWidth = $( '#main-header' ).width(),
@@ -56,7 +72,7 @@ colorhelper.controller( 'MainController', function MainController( $scope, $http
                 $scope.headerColumnWidth = (columnPixelWidth / headerPixelWidth) * 100 + "%";
 
                 // Set colorscheme
-                $scope.detailsColor = $scope.palette.colors[ 0 ];
+                $scope.colorscheme.details = $scope.palette.colors[ 0 ];
 
                 // Operations done, set status to inactive
                 $scope.status.active = 0;

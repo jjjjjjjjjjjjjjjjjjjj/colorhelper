@@ -17,7 +17,7 @@ String.toLocaleString({
 
         "%app.name": "colorhelper",
         "%app.title": "colorhelper, colorscheme inspiration",
-        "%app.description": "A simple web application to help you find a colorscheme that suits you",
+        "%app.description": "A simple web application to help you find a colorscheme that suits your project",
 
         "%status.api.title": "Getting colors...",
         "%status.api.message": "Waiting for results from the API.",

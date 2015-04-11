@@ -21,15 +21,16 @@
 
                 <img id="loading" src="resource/graphic/loading.gif" alt="" data-ng-show="status.active" />
 
-                <!-- Track by $index to avoid duplicate key error https://docs.angularjs.org/error/ngRepeat/dupes -->
-                <div data-ng-repeat="color in palette.colors track by $index"
-                     data-ng-style="
-                         {
-                            'background-color': color,
-                            'width': headerColumnWidth
-                         }"
-                     class="color">
-                </div>
+                <svg id="header-svg" data-ng-controller="SVGController">
+
+                    <!-- Track by $index to avoid duplicate key error https://docs.angularjs.org/error/ngRepeat/dupes -->
+                    <path d="" data-ng-repeat="color in palette.colors track by $index"
+                          data-ng-attr-fill="{{ '#' + color }}"
+                          class="color"
+                          data-ng-attr-d="{{ getPath( $index, palette.colors.length ) }}">
+                    </path>
+
+                </svg>
 
             </header>
 
@@ -37,7 +38,11 @@
             <div id="palette-content">
 
                 <h1 id="palette-heading">{{ palette.title }}</h1>
-                <!-- TODO: add refresh button -->
+
+                <ul id="palette-meta">
+                    <li class="meta-item" data-ng-repeat="item in palette.meta track by $index">{{ item }}</li>
+                </ul>
+
 
             </div>
 
@@ -55,11 +60,11 @@
         </div>
 
         <!-- Navigation -->
-        <div id="nav" data-ng-style="{ 'border-bottom-color': detailsColor }">
+        <div id="nav" data-ng-style="{ 'border-bottom-color': colorscheme.details }">
 
             <div class="inner">
 
-                <h1 id="page-heading"><a data-ng-click="update('random')" href="" data-ng-style="{ 'color': detailsColor }">
+                <h1 id="page-heading"><a data-ng-click="update('random')" href="" data-ng-style="{ 'color': colorscheme.details }">
 
                     {{ app.name }}
 
@@ -108,6 +113,7 @@
         <script src="resource/javascript/app.js"></script>
         <script src="resource/javascript/controller/main.js"></script>
         <script src="resource/javascript/controller/navigation.js"></script>
+        <script src="resource/javascript/controller/svg.js"></script>
 
     </body>
 

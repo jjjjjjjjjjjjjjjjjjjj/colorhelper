@@ -8,7 +8,7 @@
 
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="application-name" content="colorhelper">
--
+
     </head>
 
     <body data-ng-controller="MainController">
@@ -21,7 +21,7 @@
 
                 <img id="loading" src="resource/graphic/loading.gif" alt="" data-ng-show="status.active" />
 
-                <svg id="header-svg" data-ng-controller="SVGController">
+                <svg id="header-svg" data-ng-controller="SVGController" viewBox="0 0 100 100" preserveAspectRatio="none">
 
                     <!-- Track by $index to avoid duplicate key error https://docs.angularjs.org/error/ngRepeat/dupes -->
                     <path d="" data-ng-repeat="color in palette.colors track by $index"

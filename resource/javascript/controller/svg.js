@@ -4,20 +4,18 @@
 
 colorhelper.controller( 'SVGController', function SVGController( $scope ) {
 
-    var header = $( '#header-svg' );
-
     // returns svg path for current color column
     $scope.getPath = function( i, numCols ) {
 
         // Calculate path
-        var w = header.width() / numCols,
-            h = header.height(),
-            tilt = 60,
+        var w = 100 / numCols,
+            h = 100,
+            tilt = 20,
             lTilt = (tilt / numCols) * (numCols - i),
             rTilt = (tilt / numCols) * (numCols - i - 1),
             x1 = w * i,
             y1 = 0,
-            x2 = x1 + w + 1,
+            x2 = x1 + w + 0.1,
             y2 = 0,
             x3 = x2,
             y3 = h - rTilt,
@@ -32,6 +30,8 @@ colorhelper.controller( 'SVGController', function SVGController( $scope ) {
         path += "Z";
 
         return path;
+
+
 
     };
 

@@ -40,7 +40,11 @@
                 <h1 id="palette-heading">{{ palette.title }}</h1>
 
                 <ul id="palette-meta">
-                    <li class="meta-item" data-ng-repeat="item in palette.meta track by $index">{{ item }}</li>
+
+                    <li class="meta-item" data-ng-repeat="(key, value) in palette.meta track by $index" data-ng-attr-title="{{key}}" data-ng-hide="value == 0">
+                            <img class="meta-icon" src="resource/graphic/{{key}}.png" /> {{ value }}
+                    </li>
+
                 </ul>
 
 

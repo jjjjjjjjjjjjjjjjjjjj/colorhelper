@@ -4,6 +4,7 @@
 
 colorhelper.controller( 'MainController', function MainController( $scope, $http ) {
 
+    // App details
     $scope.app = {
 
         author: "Janne Klouman",
@@ -15,12 +16,14 @@ colorhelper.controller( 'MainController', function MainController( $scope, $http
 
     };
 
+    // Default colorscheme
     $scope.colorscheme = {
 
         details: "#e1e1e1"
 
     };
 
+    // Default status bar (none)
     $scope.status = {
 
         active: 0,
@@ -30,11 +33,10 @@ colorhelper.controller( 'MainController', function MainController( $scope, $http
 
     };
 
-
     // Grab JSON / update scope
     $scope.update = function( paletteType ) {
 
-        // Begin operation
+        // Begin operation, set status bar to talking to api
         $scope.status = {
 
             active: 1,
@@ -61,6 +63,8 @@ colorhelper.controller( 'MainController', function MainController( $scope, $http
 
                 };
 
+
+
                 // Uncomment for full list of properties
                 // console.log( $scope.palette );
                 console.log( $scope.palette.meta );
@@ -77,13 +81,10 @@ colorhelper.controller( 'MainController', function MainController( $scope, $http
                 // Operations done, set status to inactive
                 $scope.status.active = 0;
 
-                // Workaround for filling svg, unable to bind because cssableSVG() in main.js
-                // $( '.svg' ).css( 'fill', '#' + $scope.detailsColor );
-
             })
             .error( function( e, i ) {
 
-                // Set status (displays the error)
+                // Set status bar to displays the error on error
                 $scope.status = {
 
                     active: 1,

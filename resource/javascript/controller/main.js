@@ -24,7 +24,7 @@ colorhelper.controller( 'MainController', function MainController( $scope, $http
     };
 
     // Default status bar (none)
-    $scope.status = {
+    $scope.statusBar = {
 
         active: 0,
         title: '',
@@ -37,7 +37,7 @@ colorhelper.controller( 'MainController', function MainController( $scope, $http
     $scope.update = function( paletteType ) {
 
         // Begin operation, set status bar to talking to api
-        $scope.status = {
+        $scope.statusBar = {
 
             active: 1,
             title: l( '%status.api.title' ),
@@ -63,11 +63,9 @@ colorhelper.controller( 'MainController', function MainController( $scope, $http
 
                 };
 
-
-
                 // Uncomment for full list of properties
                 // console.log( $scope.palette );
-                console.log( $scope.palette.meta );
+                // console.log( $scope.palette.meta );
 
                 // Update header column width, uses pixels
                 var headerPixelWidth = $( '#main-header' ).width(),
@@ -75,17 +73,17 @@ colorhelper.controller( 'MainController', function MainController( $scope, $http
 
                 $scope.headerColumnWidth = (columnPixelWidth / headerPixelWidth) * 100 + "%";
 
-                // Set colorscheme
+                // Set colorscheme to colors fetched from colourlovers api
                 $scope.colorscheme.details = $scope.palette.colors[ 0 ];
 
-                // Operations done, set status to inactive
-                $scope.status.active = 0;
+                // Operations done, set statusbar to inactive
+                $scope.statusBar.active = 0;
 
             })
             .error( function( e, i ) {
 
                 // Set status bar to displays the error on error
-                $scope.status = {
+                $scope.statusBar = {
 
                     active: 1,
                     title: l( '%status.api.error.title' ),

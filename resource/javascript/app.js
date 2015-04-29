@@ -25,20 +25,20 @@ var l = function (string) {
 };
 
 /*
- * Generate dynamic favicon, inspired by http://stackoverflow.com/a/6296639/2298963
+ * Generate dynamic favicon
  */
 var generateFavicon = function( colors ) {
 
+    // Create a canvas and determine how many colors we have to deal with
     var canvas = document.createElement( 'canvas' ),
-        ctx,
-        link = document.getElementById( 'favicon' ).cloneNode( true ),
+        ctx = canvas.getContext('2d'),
         count = colors.length;
 
-    canvas.height = canvas.width = 16; // set the size
-    ctx = canvas.getContext('2d');
+    // Size of the canvas/favicon
+    canvas.height = canvas.width = 16;
 
     // Four different layouts based on how many colors are in the palette
-    // Could possibly be done programmatically but I'm not smart enough
+    // Could possibly be done algorithmically but I'm not smart enough
     switch (count) {
 
         case 2:
@@ -83,8 +83,8 @@ var generateFavicon = function( colors ) {
 
     }
 
-    link.href = canvas.toDataURL( 'image/png' );
-    document.head.appendChild( link );
+    // Alter favicon links href attribute
+    document.getElementById( 'favicon' ).setAttribute( 'href', canvas.toDataURL( 'image/png' ) );
 
 };
 

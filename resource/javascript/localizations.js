@@ -10,7 +10,11 @@ String.toLocaleString({
         "%status.api.error.title": "Error!",
         "%status.api.error.message": "Ursäkta, något gick fel vid kommunikation med API.",
 
-        "%menu.dev.github": "Visa på GitHub"
+        "%menu.dev.github": "Visa på GitHub",
+
+        "%menu.generate.blank": "Blank",
+        "%menu.generate.random": "Slumpad",
+        "%menu.generate.popular": "Populär"
 
     },
     "en": {
@@ -24,7 +28,11 @@ String.toLocaleString({
         "%status.api.error.title": "Error!",
         "%status.api.error.message": "I'm sorry, something went wrong when talking to the API.",
 
-        "%menu.dev.github": "View on GitHub"
+        "%menu.dev.github": "View on GitHub",
+
+        "%menu.generate.blank": "Blank",
+        "%menu.generate.random": "Random",
+        "%menu.generate.popular": "Popular"
 
     },
     "ja": {
@@ -38,6 +46,11 @@ String.toLocaleString({
         "%status.api.error.title": "エラー",
         "%status.api.error.message": "すみません、APIから結果を取る間エラーが起きてしまいました。",
 
-        "%menu.dev.github": "GitHubで見る"
+        "%menu.dev.github": "GitHubで見る",
+
+        "%menu.generate.blank": "ブランク",
+        "%menu.generate.random": "ランダム",
+        "%menu.generate.popular": "ポピュラー"
+
     }
 });

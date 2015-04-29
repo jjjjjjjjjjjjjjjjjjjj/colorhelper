@@ -5,6 +5,7 @@
         <link href="http://fonts.googleapis.com/css?family=Open+Sans:700,600,400" rel="stylesheet" type="text/css"/>
         <link rel="stylesheet" href="/resource/style/normalize.css"/>
         <link rel="stylesheet" href="/resource/style/main.css"/>
+        <link id="favicon" rel="icon" type="image/png" href="" />
 
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="application-name" content="colorhelper">
@@ -18,8 +19,6 @@
 
             <!-- Header -->
             <header id="main-header">
-
-                <img id="loading" src="resource/graphic/loading.gif" alt="" data-ng-show="status.active" />
 
                 <svg id="header-svg" data-ng-controller="SVGController" viewBox="0 0 100 100" preserveAspectRatio="none">
 
@@ -41,8 +40,16 @@
 
                 <ul id="palette-meta">
 
-                    <li class="meta-item" data-ng-repeat="(key, value) in palette.meta track by $index" data-ng-attr-title="{{key}}" data-ng-hide="value == 0">
-                            <img class="meta-icon" src="resource/graphic/{{key}}.png" /> {{ value }}
+                    <li class="meta-item" data-ng-repeat="(key, value) in palette.meta track by $index" data-ng-attr-title="{{ key }}" data-ng-hide="value == 0">
+
+                        <img class="meta-icon" data-ng-src="resource/graphic/{{ key }}.png" alt="" /> {{ value }}
+
+                    </li>
+
+                    <li class="meta-item" data-ng-hide="palette.scratch">
+
+                        <a data-ng-href="{{ palette.url }}" data-ng-attr-title="{{ ll( '%meta.colourlovers' ) }}"><img class="meta-icon" src="resource/graphic/outgoing-link.png" alt="" /><span>CL&#x2197;</span></a>
+
                     </li>
 
                 </ul>
@@ -99,11 +106,11 @@
         </div>
 
         <!-- Status bar -->
-        <div id="status-bar" data-ng-show="status.active" data-ng-style="{ 'background': status.background }">
+        <div id="status-bar" data-ng-show="statusBar.active" data-ng-style="{ 'background': statusBar.background }">
 
             <div class="inner">
 
-                <span class="status-title">{{ status.title }}</span> {{ status.message }}
+                <span class="status-title">{{ statusBar.title }}</span> {{ statusBar.message }}
                 <a class="close nolink" href="close"><img id="close-icon" src="resource/graphic/close-status.png" alt=""/></a>
 
             </div>

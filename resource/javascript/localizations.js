@@ -14,7 +14,9 @@ String.toLocaleString({
 
         "%menu.generate.blank": "Blank",
         "%menu.generate.random": "Slumpad",
-        "%menu.generate.popular": "Populär"
+        "%menu.generate.popular": "Populär",
+
+        "%meta.colourlovers": "Visa denna palette på www.colourlovers.com"
 
     },
     "en": {
@@ -32,7 +34,9 @@ String.toLocaleString({
 
         "%menu.generate.blank": "Blank",
         "%menu.generate.random": "Random",
-        "%menu.generate.popular": "Popular"
+        "%menu.generate.popular": "Popular",
+
+        "%meta.colourlovers": "View this palette on www.colourlovers.com"
 
     },
     "ja": {
@@ -50,7 +54,9 @@ String.toLocaleString({
 
         "%menu.generate.blank": "ブランク",
         "%menu.generate.random": "ランダム",
-        "%menu.generate.popular": "ポピュラー"
+        "%menu.generate.popular": "ポピュラー",
+
+        "%meta.colourlovers": "この配色をcolourloversで見る"
 
     }
 });

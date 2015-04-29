@@ -25,6 +25,70 @@ var l = function (string) {
 };
 
 /*
+ * Generate dynamic favicon, inspired by http://stackoverflow.com/a/6296639/2298963
+ */
+var generateFavicon = function( colors ) {
+
+    var canvas = document.createElement( 'canvas' ),
+        ctx,
+        link = document.getElementById( 'favicon' ).cloneNode( true ),
+        count = colors.length;
+
+    canvas.height = canvas.width = 16; // set the size
+    ctx = canvas.getContext('2d');
+
+    // Four different layouts based on how many colors are in the palette
+    // Could possibly be done programmatically but I'm not smart enough
+    switch (count) {
+
+        case 2:
+            ctx.fillStyle = "#" + colors[0];
+            ctx.fillRect(0, 0, 16, 8);
+            ctx.fillStyle = "#" + colors[1];
+            ctx.fillRect(0, 8, 16, 16);
+            break;
+
+        case 3:
+            ctx.fillStyle = "#" + colors[0];
+            ctx.fillRect(0, 0, 16, 8);
+            ctx.fillStyle = "#" + colors[1];
+            ctx.fillRect(0, 8, 8, 16);
+            ctx.fillStyle = "#" + colors[2];
+            ctx.fillRect(8, 8, 16, 16);
+            break;
+
+        case 4:
+            ctx.fillStyle = "#" + colors[0];
+            ctx.fillRect(0, 0, 8, 8);
+            ctx.fillStyle = "#" + colors[1];
+            ctx.fillRect(8, 0, 16, 16);
+            ctx.fillStyle = "#" + colors[2];
+            ctx.fillRect(0, 8, 8, 16);
+            ctx.fillStyle = "#" + colors[3];
+            ctx.fillRect(8, 8, 16, 16);
+            break;
+
+        case 5:
+            ctx.fillStyle = "#" + colors[0];
+            ctx.fillRect(0, 0, 8, 8);
+            ctx.fillStyle = "#" + colors[1];
+            ctx.fillRect(8, 0, 16, 16);
+            ctx.fillStyle = "#" + colors[2];
+            ctx.fillRect(0, 8, 5.33, 16);
+            ctx.fillStyle = "#" + colors[3];
+            ctx.fillRect(5.33, 8, 10.66, 16);
+            ctx.fillStyle = "#" + colors[4];
+            ctx.fillRect(10.66, 8, 16, 16);
+            break;
+
+    }
+
+    link.href = canvas.toDataURL( 'image/png' );
+    document.head.appendChild( link );
+
+};
+
+/*
  * Replace all SVG images with inline SVG
  * Taken from http://stackoverflow.com/a/11978996/2298963
  */

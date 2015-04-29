@@ -9,8 +9,30 @@ colorhelper.controller( 'NavigationController', function NavigationController( $
 
         0: {
 
-            label: 'home',
-            href: '/'
+            label: 'Generate',
+            href: '#',
+            subMenu: {
+
+                0: {
+
+                    label: l( '%menu.generate.blank' ),
+                    href: 'generate.blank'
+
+                },
+                1: {
+
+                    label: l( '%menu.generate.random' ),
+                    href: 'generate.random'
+
+                },
+                2: {
+
+                    label: l( '%menu.generate.popular' ),
+                    href: 'generate.popular'
+
+                }
+
+            }
 
         },
         1: {
@@ -21,7 +43,7 @@ colorhelper.controller( 'NavigationController', function NavigationController( $
 
                 0: {
 
-                    label: l('%menu.dev.github'),
+                    label: l( '%menu.dev.github' ),
                     href: $scope.app.GitHubURL
 
                 }
@@ -37,14 +59,14 @@ colorhelper.controller( 'NavigationController', function NavigationController( $
 
                 0: {
 
-                    label: l('%menu.setting.popular'),
+                    label: l( '%menu.setting.popular' ),
                     href: '#',
                     data: true
 
                 },
                 1: {
 
-                    label: l('%menu.setting.save'),
+                    label: l( '%menu.setting.save' ),
                     href: '#'
 
                 }

@@ -15,7 +15,7 @@ colorhelper.controller( 'SVGController', function SVGController( $scope ) {
             rTilt = (tilt / numCols) * (numCols - i - 1),
             x1 = w * i,
             y1 = 0,
-            x2 = x1 + w + 0.1,
+            x2 = x1 + w + 0.05, // 0.05 adjustment to slightly overlap colors
             y2 = 0,
             x3 = x2,
             y3 = h - rTilt,
@@ -30,8 +30,6 @@ colorhelper.controller( 'SVGController', function SVGController( $scope ) {
         path += "Z";
 
         return path;
-
-
 
     };
 

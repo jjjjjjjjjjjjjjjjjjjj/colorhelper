@@ -20,40 +20,38 @@
             <!-- Header -->
             <header id="main-header">
 
-                <svg id="header-svg" data-ng-controller="SVGController" viewBox="0 0 100 100" preserveAspectRatio="none">
+                <svg id="header-svg" data-ng-mouseleave="ngMLeave()" data-ng-controller="SVGController" viewBox="0 0 100 100" preserveAspectRatio="none">
 
                     <!-- Track by $index to avoid duplicate key error https://docs.angularjs.org/error/ngRepeat/dupes -->
                     <ng-path data-ng-repeat="color in palette.colors track by $index"
-                          class="color"
                           data-ng-d="getColorPath( $index, palette.colors.length )"
                           data-ng-index="$index"
                           data-ng-fill="color" >
-
                     </ng-path>
 
                     <!-- Path overlay for edit color option -->
-                    <rect data-ng-repeat="color in palette.colors track by $index"
-                          data-index="{{ $index }}"
-                          fill="#000"
-                          opacity="0.3"
-                          class="color-overlay"
-                          data-ng-attr-width="{{ ( 100 / palette.colors.length ) / 2 }}"
-                          height="25"
-                          data-ng-attr-x="{{ $index * ( 100 / palette.colors.length ) }}"
-                          y="0">
-                    </rect>
+                    <ng-rect data-ng-repeat="color in palette.colors track by $index"
+                             data-ng-index="$index"
+                             data-ng-width="( 100 / palette.colors.length ) / 2"
+                             data-ng-x="$index * ( 100 / palette.colors.length )"
+                             fill="#fff"
+                             height="25"
+                             y="0"
+                             class="color-overlay edit"
+                             opacity="0.4">
+                    </ng-rect>
 
                     <!-- Path overlay for remove color option -->
-                    <rect data-ng-repeat="color in palette.colors track by $index"
-                          data-index="{{ $index }}"
-                          fill="#000"
-                          opacity="0.4"
-                          class="color-overlay"
-                          data-ng-attr-width="{{ ( 100 / palette.colors.length ) / 2 }}"
-                          height="25"
-                          data-ng-attr-x="{{ $index * ( 100 / palette.colors.length ) + ( 50 / palette.colors.length ) }}"
-                          y="0">
-                    </rect>
+                    <ng-rect data-ng-repeat="color in palette.colors track by $index"
+                             data-ng-index="$index"
+                             data-ng-width="( 100 / palette.colors.length ) / 2"
+                             data-ng-x="$index * ( 100 / palette.colors.length ) + ( 50 / palette.colors.length )"
+                             fill="#fff"
+                             height="25"
+                             y="0"
+                             class="color-overlay remove"
+                             opacity="0.3">
+                    </ng-rect>
 
                 </svg>
 

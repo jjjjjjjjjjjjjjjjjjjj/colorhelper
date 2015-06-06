@@ -142,7 +142,6 @@ li {
 
     margin-top:             120px;
     background:             #ffffff;
-    height:                 800px;
 
 }
 
@@ -191,10 +190,18 @@ li {
 
 }
 
-.color:hover,
-.color:focus {
+.color-overlay.edit,
+.color-overlay.remove {
 
-    opacity:                0.8;
+    display:                none;
+    position:               relative;
+    z-index:                3; /* place above color */
+    cursor:                 pointer;
+
+}
+
+.color-overlay:hover {
+
     cursor:                 pointer;
 
 }
@@ -232,7 +239,21 @@ li {
 
     display:                inline-block;
     padding:                3px;
-    margin-left:            4px;
+    margin-right:           4px;
+
+}
+
+#palette-content #palette-meta li span {
+
+    font-size:              14px;
+    position:               relative;
+    top:                    -1px;
+
+}
+
+#palette-content #palette-meta li span:hover {
+
+    text-decoration:        underline;
 
 }
 
@@ -243,5 +264,6 @@ li {
     width:                  16px;
     position:               relative;
     top:                    2px;
+    margin-right:           3px;
 
 }

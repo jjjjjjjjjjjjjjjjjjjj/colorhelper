@@ -16,19 +16,22 @@ colorhelper.controller( 'NavigationController', function NavigationController( $
                 0: {
 
                     label: l( '%menu.generate.blank' ),
-                    href: 'generate.blank'
+                    href: 'generate.blank',
+                    noLink: true
 
                 },
                 1: {
 
                     label: l( '%menu.generate.random' ),
-                    href: 'generate.random'
+                    href: 'generate.random',
+                    noLink: true
 
                 },
                 2: {
 
                     label: l( '%menu.generate.popular' ),
-                    href: 'generate.popular'
+                    href: 'generate.popular',
+                    noLink: true
 
                 }
 

@@ -33,6 +33,13 @@ colorhelper.controller( 'MainController', function MainController( $scope, $http
 
     };
 
+    // Wrapper function for localization in html
+    $scope.ll = function( s ) {
+
+        return l( s );
+
+    };
+
     // Grab JSON / update scope
     $scope.update = function( paletteType ) {
 
@@ -79,6 +86,9 @@ colorhelper.controller( 'MainController', function MainController( $scope, $http
                 // Operations done, set statusbar to inactive
                 $scope.statusBar.active = 0;
 
+                // Generate new favicon
+                generateFavicon( $scope.palette.colors );
+
             })
             .error( function( e, i ) {
 
@@ -98,5 +108,6 @@ colorhelper.controller( 'MainController', function MainController( $scope, $http
 
     // TODO: Replace random with current pref
     $scope.update( 'random' );
+
 
 });

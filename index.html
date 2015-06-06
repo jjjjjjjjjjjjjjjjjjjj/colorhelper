@@ -23,11 +23,37 @@
                 <svg id="header-svg" data-ng-controller="SVGController" viewBox="0 0 100 100" preserveAspectRatio="none">
 
                     <!-- Track by $index to avoid duplicate key error https://docs.angularjs.org/error/ngRepeat/dupes -->
-                    <path d="" data-ng-repeat="color in palette.colors track by $index"
-                          data-ng-attr-fill="{{ '#' + color }}"
+                    <ng-path data-ng-repeat="color in palette.colors track by $index"
                           class="color"
-                          data-ng-attr-d="{{ getPath( $index, palette.colors.length ) }}">
-                    </path>
+                          data-ng-d="getColorPath( $index, palette.colors.length )"
+                          data-ng-index="$index"
+                          data-ng-fill="color" >
+
+                    </ng-path>
+
+                    <!-- Path overlay for edit color option -->
+                    <rect data-ng-repeat="color in palette.colors track by $index"
+                          data-index="{{ $index }}"
+                          fill="#000"
+                          opacity="0.3"
+                          class="color-overlay"
+                          data-ng-attr-width="{{ ( 100 / palette.colors.length ) / 2 }}"
+                          height="25"
+                          data-ng-attr-x="{{ $index * ( 100 / palette.colors.length ) }}"
+                          y="0">
+                    </rect>
+
+                    <!-- Path overlay for remove color option -->
+                    <rect data-ng-repeat="color in palette.colors track by $index"
+                          data-index="{{ $index }}"
+                          fill="#000"
+                          opacity="0.4"
+                          class="color-overlay"
+                          data-ng-attr-width="{{ ( 100 / palette.colors.length ) / 2 }}"
+                          height="25"
+                          data-ng-attr-x="{{ $index * ( 100 / palette.colors.length ) + ( 50 / palette.colors.length ) }}"
+                          y="0">
+                    </rect>
 
                 </svg>
 
@@ -125,6 +151,7 @@
         <script src="resource/javascript/controller/main.js"></script>
         <script src="resource/javascript/controller/navigation.js"></script>
         <script src="resource/javascript/controller/svg.js"></script>
+        <script src="resource/javascript/directive/svg.js"></script>
 
     </body>
 

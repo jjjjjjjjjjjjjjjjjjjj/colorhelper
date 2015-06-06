@@ -74,11 +74,11 @@ var generateFavicon = function( colors ) {
             ctx.fillStyle = "#" + colors[1];
             ctx.fillRect(8, 0, 16, 16);
             ctx.fillStyle = "#" + colors[2];
-            ctx.fillRect(0, 8, 5.33, 16);
+            ctx.fillRect(0, 8, 5.34, 16);
             ctx.fillStyle = "#" + colors[3];
             ctx.fillRect(5.33, 8, 10.66, 16);
             ctx.fillStyle = "#" + colors[4];
-            ctx.fillRect(10.66, 8, 16, 16);
+            ctx.fillRect(10.65, 8, 16, 16);
             break;
 
     }

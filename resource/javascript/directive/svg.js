@@ -15,13 +15,6 @@ colorhelper.directive( 'ngPath', [function () {
         },
         link: function ( scope ) {
 
-            scope.ngMEnter = function( index ) {
-
-                $( '.color-overlay' ).css( 'display', 'none' );
-                $( '.color-overlay.edit' ).eq( index ).css( 'display', 'inline-block' );
-                $( '.color-overlay.remove' ).eq( index ).css( 'display', 'inline-block' );
-
-            }
 
         }
 
@@ -46,17 +39,6 @@ colorhelper.directive( 'ngRect', [function () {
         },
         link: function ( scope, el ) {
 
-            scope.ngClick = function() {
-
-                console.log( el );
-
-            }
-
-            scope.ngMLeave = function() {
-
-                $( '.color-overlay' ).css( 'display', 'none' );
-
-            }
 
         }
 

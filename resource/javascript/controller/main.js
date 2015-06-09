@@ -1,8 +1,10 @@
-/*
- * Main controller
- */
+angular
+    .module( 'colorhelper' )
+    .controller( 'Main', Main );
 
-colorhelper.controller( 'MainController', function MainController( $scope, $http ) {
+Main.$inject = [ 'colorscheme', 'dataservice', 'palette', '$scope' ];
+
+function Main( colorscheme, dataservice, palette, $scope ) {
 
     // App details
     $scope.app = {
@@ -15,99 +17,36 @@ colorhelper.controller( 'MainController', function MainController( $scope, $http
         GitHubURL: "https://github.com/janneklouman/colorhelper"
 
     };
+    
+    activate();
 
-    // Default colorscheme
-    $scope.colorscheme = {
+    function activate() {
 
-        details: "#e1e1e1"
+        return getPalette( 'random' );
 
-    };
+    }
 
-    // Default status bar (none)
-    $scope.statusBar = {
+    function getPalette( paletteType ) {
 
-        active: 0,
-        title: '',
-        messsage: '',
-        background: ''
+        return dataservice.getPalette( paletteType )
+            .then( function( data ) {
 
-    };
+                palette.set( data );
+                colorscheme.update( data.colors[0] );
+                $scope.palette = data;
+                return $scope.palette;
+
+            });
+
+    }
+
+
 
     // Wrapper function for localization in html
-    $scope.ll = function( s ) {
+    $scope.ll = function ( s ) {
 
         return l( s );
 
     };
 
-    // Grab JSON / update scope
-    $scope.update = function( paletteType ) {
-
-        // Begin operation, set status bar to talking to api
-        $scope.statusBar = {
-
-            active: 1,
-            title: l( '%status.api.title' ),
-            message: l( '%status.api.message' ),
-            background: '#fffde7'
-
-        };
-
-        // Talk to API
-        $http.get( '../resource/php/' + paletteType + '_palette_json.php')
-            .success( function( response ) {
-
-                // Response comes encapsulated in array
-                $scope.palette = response[0];
-
-                // Gather all metadata in object for easy iteration
-                $scope.palette.meta = {
-
-                    rank: $scope.palette.rank,
-                    views: $scope.palette.numViews,
-                    hearts: $scope.palette.numHearts,
-                    comments: $scope.palette.numComments
-
-                };
-
-                // Uncomment for full list of properties
-                // console.log( $scope.palette );
-                // console.log( $scope.palette.meta );
-
-                // Update header column width, uses pixels
-                var headerPixelWidth = $( '#main-header' ).width(),
-                    columnPixelWidth =  headerPixelWidth / $scope.palette.colors.length;
-
-                $scope.headerColumnWidth = (columnPixelWidth / headerPixelWidth) * 100 + "%";
-
-                // Set colorscheme to colors fetched from colourlovers api
-                $scope.colorscheme.details = $scope.palette.colors[ 0 ];
-
-                // Operations done, set statusbar to inactive
-                $scope.statusBar.active = 0;
-
-                // Generate new favicon
-                generateFavicon( $scope.palette.colors );
-
-            })
-            .error( function( e, i ) {
-
-                // Set status bar to displays the error on error
-                $scope.statusBar = {
-
-                    active: 1,
-                    title: l( '%status.api.error.title' ),
-                    message: l( '%status.api.error.message' ) + ' (' + i + ')',
-                    background: '#CD8682'
-
-                }
-
-            });
-
-    };
-
-    // TODO: Replace random with current pref
-    $scope.update( 'random' );
-
-
-});
+}

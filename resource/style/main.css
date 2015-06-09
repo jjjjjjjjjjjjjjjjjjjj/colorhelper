@@ -200,6 +200,13 @@ li {
 
 }
 
+.color:hover .color-overlay,
+.color:active .color-overlay {
+
+    display:                inline-block;
+
+}
+
 .color-overlay:hover {
 
     cursor:                 pointer;

@@ -12,7 +12,7 @@
 
     </head>
 
-    <body data-ng-controller="MainController">
+    <body data-ng-controller="Main">
 
         <!-- Content wrap -->
         <div role="main" id="main-wrapper" class="inner">
@@ -20,38 +20,44 @@
             <!-- Header -->
             <header id="main-header">
 
-                <svg id="header-svg" data-ng-mouseleave="ngMLeave()" data-ng-controller="SVGController" viewBox="0 0 100 100" preserveAspectRatio="none">
+                <svg id="header-svg" data-ng-controller="SVGController" viewBox="0 0 100 100" preserveAspectRatio="none">
 
                     <!-- Track by $index to avoid duplicate key error https://docs.angularjs.org/error/ngRepeat/dupes -->
-                    <ng-path data-ng-repeat="color in palette.colors track by $index"
-                          data-ng-d="getColorPath( $index, palette.colors.length )"
-                          data-ng-index="$index"
-                          data-ng-fill="color" >
-                    </ng-path>
+                    <g data-ng-repeat="color in palette.colors track by $index" class="color">
 
-                    <!-- Path overlay for edit color option -->
-                    <ng-rect data-ng-repeat="color in palette.colors track by $index"
-                             data-ng-index="$index"
-                             data-ng-width="( 100 / palette.colors.length ) / 2"
-                             data-ng-x="$index * ( 100 / palette.colors.length )"
-                             fill="#fff"
-                             height="25"
-                             y="0"
-                             class="color-overlay edit"
-                             opacity="0.4">
-                    </ng-rect>
+                        <ng-path
+                              data-ng-d="getColorPath( $index, palette.colors.length )"
+                              data-ng-index="$index"
+                              data-ng-fill="color" >
+                        </ng-path>
 
-                    <!-- Path overlay for remove color option -->
-                    <ng-rect data-ng-repeat="color in palette.colors track by $index"
-                             data-ng-index="$index"
-                             data-ng-width="( 100 / palette.colors.length ) / 2"
-                             data-ng-x="$index * ( 100 / palette.colors.length ) + ( 50 / palette.colors.length )"
-                             fill="#fff"
-                             height="25"
-                             y="0"
-                             class="color-overlay remove"
-                             opacity="0.3">
-                    </ng-rect>
+                        <g>
+                        <!-- Path overlay for edit color option -->
+                            <ng-rect data-ng-index="$index"
+                                     data-ng-width="( 100 / palette.colors.length ) / 2"
+                                     data-ng-x="$index * ( 100 / palette.colors.length )"
+                                     fill="#000"
+                                     height="25"
+                                     y="0"
+                                     class="color-overlay edit"
+                                     opacity="0.2">
+                            </ng-rect>
+
+                            <!-- Path overlay for remove color option -->
+
+                            <ng-rect data-ng-index="$index"
+                                     data-ng-width="( 100 / palette.colors.length ) / 2"
+                                     data-ng-x="$index * ( 100 / palette.colors.length ) + ( 50 / palette.colors.length )"
+                                     fill="#000"
+                                     height="25"
+                                     y="0"
+                                     class="color-overlay remove"
+                                     opacity="0.1">
+
+                            </ng-rect>
+                        </g>
+
+                    </g>
 
                 </svg>
 
@@ -130,11 +136,11 @@
         </div>
 
         <!-- Status bar -->
-        <div id="status-bar" data-ng-show="statusBar.active" data-ng-style="{ 'background': statusBar.background }">
+        <div id="status-bar" data-ng-show="status.show" data-ng-style="{ 'background': status.background }">
 
             <div class="inner">
 
-                <span class="status-title">{{ statusBar.title }}</span> {{ statusBar.message }}
+                <span class="status-title">{{ status.title }}</span> {{ status.message }}
                 <a class="close nolink" href="close"><img id="close-icon" src="resource/graphic/close-status.png" alt=""/></a>
 
             </div>
@@ -146,9 +152,17 @@
         <script src="resource/javascript/l10n.js"></script>
         <script src="resource/javascript/localizations.js"></script>
         <script src="resource/javascript/app.js"></script>
+
         <script src="resource/javascript/controller/main.js"></script>
         <script src="resource/javascript/controller/navigation.js"></script>
         <script src="resource/javascript/controller/svg.js"></script>
+
+        <script src="resource/javascript/service/palette.js"></script>
+        <script src="resource/javascript/service/status.js"></script>
+        <script src="resource/javascript/service/colorscheme.js"></script>
+
+        <script src="resource/javascript/factory/dataservice.js"></script>
+
         <script src="resource/javascript/directive/svg.js"></script>
 
     </body>

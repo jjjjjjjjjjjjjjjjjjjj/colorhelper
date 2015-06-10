@@ -85,6 +85,9 @@ function palette( status, $rootScope ) {
                 // Removes the color from the current palettes array.
                 service.current.colors.splice( index, 1 );
 
+                // Generate new favicon.
+                generateFavicon( service.current.colors );
+
             } catch( error ) {
 
                 // Set status (display error).

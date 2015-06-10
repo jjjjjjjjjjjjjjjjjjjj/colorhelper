@@ -1,6 +1,6 @@
 angular
     .module( 'colorhelper' )
-    .service( 'status', status )
+    .service( 'status', status );
 
 status.$inject = [ '$rootScope' ];
 
@@ -8,7 +8,7 @@ function status( $rootScope ) {
 
     var service = {
 
-        // Status skeleton.
+        // Status structure.
         status: {
 
             show: 0,
@@ -29,17 +29,18 @@ function status( $rootScope ) {
     function set( status ) {
 
         // Update the status.
-        service.status = ( status );
+        service.status = status;
 
         // Broadcast that it's been updated.
-        $rootScope.$broadcast('status.update');
+        $rootScope.$broadcast( 'status-updated' );
 
-    };
+    }
 
     // Hides the status bar from the user.
     function hide() {
 
         service.status.show = 0;
+
 
     }
 

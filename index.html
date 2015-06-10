@@ -12,7 +12,7 @@
 
     </head>
 
-    <body data-ng-controller="Main">
+    <body data-ng-controller="MainController">
 
         <!-- Content wrap -->
         <div role="main" id="main-wrapper" class="inner">
@@ -25,36 +25,39 @@
                     <!-- Track by $index to avoid duplicate key error https://docs.angularjs.org/error/ngRepeat/dupes -->
                     <g data-ng-repeat="color in palette.colors track by $index" class="color">
 
-                        <ng-path
-                              data-ng-d="getColorPath( $index, palette.colors.length )"
+                        <path data-index="{{ $index }}"
+                              data-ng-attr-fill="{{ '#' + color }}"
+                              data-ng-attr-d="{{ getColorPath( $index, palette.colors.length ) }}"
+                              data-ng-attr-fill="color"
                               data-ng-index="$index"
-                              data-ng-fill="color" >
-                        </ng-path>
+                              class="color-background">
+                        </path>
 
                         <g>
-                        <!-- Path overlay for edit color option -->
-                            <ng-rect data-ng-index="$index"
-                                     data-ng-width="( 100 / palette.colors.length ) / 2"
-                                     data-ng-x="$index * ( 100 / palette.colors.length )"
-                                     fill="#000"
-                                     height="25"
-                                     y="0"
-                                     class="color-overlay edit"
-                                     opacity="0.2">
-                            </ng-rect>
 
-                            <!-- Path overlay for remove color option -->
+                            <!-- Overlay for edit color option. -->
+                            <rect data-ng-index="$index"
+                                  data-ng-attr-width="{{ ( 100 / palette.colors.length ) / 2 + 1 }}"
+                                  data-ng-attr-x="{{ $index * ( 100 / palette.colors.length ) }}"
+                                  data-ng-click="editColor( $index )"
+                                  fill="#fff"
+                                  height="25"
+                                  y="0"
+                                  class="color-overlay edit">
+                            </rect>
 
-                            <ng-rect data-ng-index="$index"
-                                     data-ng-width="( 100 / palette.colors.length ) / 2"
-                                     data-ng-x="$index * ( 100 / palette.colors.length ) + ( 50 / palette.colors.length )"
-                                     fill="#000"
-                                     height="25"
-                                     y="0"
-                                     class="color-overlay remove"
-                                     opacity="0.1">
+                            <!-- Overlay for remove color option. -->
+                            <rect data-ng-index="$index"
+                                  data-ng-attr-width="{{ ( 100 / palette.colors.length ) / 2 + 1 }}"
+                                  data-ng-attr-x="{{ $index * ( 100 / palette.colors.length ) + ( 50 / palette.colors.length ) }}"
+                                  data-ng-click="removeColor( $index )"
+                                  fill="#fff"
+                                  height="25"
+                                  y="0"
+                                  class="color-overlay remove">
 
-                            </ng-rect>
+                            </rect>
+
                         </g>
 
                     </g>
@@ -68,7 +71,7 @@
 
                 <h1 id="palette-heading">{{ palette.title }}</h1>
 
-                <ul id="palette-meta">
+                <ul id="palette-meta" data-ng-hide="palette.modified">
 
                     <li class="meta-item" data-ng-repeat="(key, value) in palette.meta track by $index" data-ng-attr-title="{{ key }}" data-ng-hide="value == 0">
 
@@ -76,7 +79,7 @@
 
                     </li>
 
-                    <li class="meta-item" data-ng-hide="palette.scratch">
+                    <li class="meta-item">
 
                         <a data-ng-href="{{ palette.url }}" data-ng-attr-title="{{ ll( '%meta.colourlovers' ) }}"><img class="meta-icon" src="resource/graphic/outgoing-link.png" alt="" /><span>CL&#x2197;</span></a>
 
@@ -105,7 +108,7 @@
 
             <div class="inner">
 
-                <h1 id="page-heading"><a data-ng-click="update('random')" href="" data-ng-style="{ 'color': colorscheme.details }">
+                <h1 id="page-heading"><a data-ng-click="getPalette( 'random' )" href="" data-ng-style="{ 'color': colorscheme.details }">
 
                     {{ app.name }}
 
@@ -162,8 +165,6 @@
         <script src="resource/javascript/service/colorscheme.js"></script>
 
         <script src="resource/javascript/factory/dataservice.js"></script>
-
-        <script src="resource/javascript/directive/svg.js"></script>
 
     </body>
 

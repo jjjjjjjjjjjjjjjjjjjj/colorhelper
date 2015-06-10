@@ -1,8 +1,10 @@
-/*
- * SVG controller
- */
+angular
+    .module( 'colorhelper' )
+    .controller( 'SVGController', SVGController );
 
-colorhelper.controller( 'SVGController', function SVGController( $scope ) {
+SVGController.$inject = [ '$scope' ];
+
+function SVGController( $scope ) {
 
     // Returns svg path for current color column
     $scope.getColorPath = function( i, numCols ) {
@@ -33,5 +35,5 @@ colorhelper.controller( 'SVGController', function SVGController( $scope ) {
 
     };
 
-});
+}
 

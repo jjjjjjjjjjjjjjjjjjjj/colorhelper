@@ -4,7 +4,7 @@ angular
 
 dataservice.$inject = [ '$http', 'status', 'palette' ];
 
-function dataservice( $http, status, palette ) {
+function dataservice( $http, status ) {
 
     return {
 
@@ -14,7 +14,7 @@ function dataservice( $http, status, palette ) {
 
     function getPalette( paletteType ) {
 
-        // Set and show status, tell user API call is being made.
+        // Set status.
         status.set({
 
             show: 1,
@@ -31,28 +31,27 @@ function dataservice( $http, status, palette ) {
 
         function onGetPaletteSuccess( response ){
 
-            // API Call made successfully, hide the status bar.
+            // Hide status bar.
             status.hide();
 
             // Return palette object.
             return response.data[0];
 
-        };
+        }
 
         function onGetPaletteFailed( error ) {
 
-            // Set status bar to display the error.
+            // Set status.
             status.set ({
 
-                active: 1,
+                show: 1,
                 title: l( '%status.api.error.title' ),
                 message: l( '%status.api.error.message' ) + ' (' + error + ')',
                 background: '#CD8682'
 
             });
 
-        };
-
+        }
 
     }
 

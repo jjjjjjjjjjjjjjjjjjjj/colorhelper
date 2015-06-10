@@ -2,15 +2,13 @@ angular
     .module( 'colorhelper' )
     .service( 'colorscheme', colorscheme );
 
-function colorscheme() {
+colorscheme.$inject = [ '$rootScope' ];
+
+function colorscheme( $rootScope ) {
 
     var service = {
 
-        colorscheme: {
-
-            details: '#e1e1e1'
-
-        },
+        details: '#e1e1e1',
         update: update
 
     }
@@ -20,7 +18,11 @@ function colorscheme() {
 
     function update( color ) {
 
-        service.colorscheme.details = color;
+        // Update detailscolor
+        service.details = color;
+
+        // Broadcast that it's been updated.
+        $rootScope.$broadcast( 'colorscheme-updated' );
 
     }
 

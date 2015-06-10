@@ -1,23 +1,11 @@
 angular
     .module( 'colorhelper' )
-    .controller( 'Main', Main );
+    .controller( 'MainController', MainController );
 
-Main.$inject = [ 'colorscheme', 'dataservice', 'palette', '$scope' ];
+MainController.$inject = [ 'status', 'colorscheme', 'dataservice', 'palette', '$scope' ];
 
-function Main( colorscheme, dataservice, palette, $scope ) {
+function MainController( status, colorscheme, dataservice, palette, $scope ) {
 
-    // App details
-    $scope.app = {
-
-        author: "Janne Klouman",
-        version: "1.0 alpha",
-        name: l( '%app.name' ),
-        title: l( '%app.title' ),
-        description: l( '$page.description' ),
-        GitHubURL: "https://github.com/janneklouman/colorhelper"
-
-    };
-    
     activate();
 
     function activate() {
@@ -40,7 +28,44 @@ function Main( colorscheme, dataservice, palette, $scope ) {
 
     }
 
+    $scope.getPalette = function( paletteType ) {
 
+        getPalette( paletteType );
+
+    }
+
+    // Updates the status (often synonymous with showing the status bar).
+    $scope.$on( 'status-updated', function() {
+
+        $scope.status = status.status;
+
+    });
+
+    // Update the colors of the website
+    $scope.$on( 'colorscheme-updated', function() {
+
+        $scope.colorscheme = { details: '#' + colorscheme.details };
+
+    });
+
+    // Remove color from the current palette.
+    $scope.removeColor = function( i ) {
+
+        palette.remove( i );
+
+    };
+
+    // App details
+    $scope.app = {
+
+        author: "Janne Klouman",
+        version: "1.0 alpha",
+        name: l( '%app.name' ),
+        title: l( '%app.title' ),
+        description: l( '$page.description' ),
+        GitHubURL: "https://github.com/janneklouman/colorhelper"
+
+    };
 
     // Wrapper function for localization in html
     $scope.ll = function ( s ) {

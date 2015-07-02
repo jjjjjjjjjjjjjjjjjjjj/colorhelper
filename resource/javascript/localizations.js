@@ -20,7 +20,12 @@ String.toLocaleString({
         "%meta.colourlovers": "Visa denna palette på www.colourlovers.com",
 
         "%palette.modified": "(modifierad)",
-        "%palette.error.remove.message": "Du måste ha minst en färg i paletten!"
+        "%palette.error.remove.message": "Du måste ha minst en färg i paletten!",
+
+        "%menu.add": "Lägg till färg",
+        "%menu.new": "Ny palett",
+        "%menu.save": "Spara"
+
 
     },
     "en": {
@@ -44,7 +49,11 @@ String.toLocaleString({
         "%meta.colourlovers": "View this palette on www.colourlovers.com",
 
         "%palette.modified": "(modified)",
-        "%palette.error.remove.message": "You need at least one color in the palette!"
+        "%palette.error.remove.message": "You need at least one color in the palette!",
+
+        "%menu.add": "Add color",
+        "%menu.new": "New palette",
+        "%menu.save": "Save"
 
     },
     "ja": {
@@ -68,7 +77,11 @@ String.toLocaleString({
         "%meta.colourlovers": "この配色をcolourloversで見る",
 
         "%palette.modified": "(変更された)",
-        "%palette.error.remove.message": "You need at least one color in the palette!"
+        "%palette.error.remove.message": "You need at least one color in the palette!",
+
+        "%menu.add": "カラーをアッドする",
+        "%menu.new": "新しい配色",
+        "%menu.save": "セーブ"
 
 
     }

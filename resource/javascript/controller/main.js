@@ -85,4 +85,18 @@ function MainController( status, colorscheme, dataservice, palette, $scope ) {
 
     };
 
+    $scope.copy = function( text ) {
+
+        if (navigator.userAgent.indexOf('Mac OS X') != -1) {
+
+            window.prompt( "CMD + C -> ENTER" , text );
+
+        } else {
+
+            window.prompt( "CTRL + C -> ENTER" , text );
+
+        }
+
+    }
+
 }

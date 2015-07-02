@@ -16,12 +16,23 @@ function MainController( status, colorscheme, dataservice, palette, $scope ) {
 
     function getPalette( paletteType ) {
 
+        // Set status
+        $scope.status = {
+
+            show: 1,
+            title: l( '%status.api.title' ),
+            message: l( '%status.api.message' ),
+            background: '#fffde7'
+
+        };
+
         return dataservice.getPalette( paletteType )
             .then( function( data ) {
 
                 palette.set( data );
                 colorscheme.update( data.colors[0] );
                 $scope.palette = data;
+                $scope.status.show = 0;
                 return $scope.palette;
 
             });

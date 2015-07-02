@@ -8,12 +8,6 @@ var colorhelper = angular.module( 'colorhelper', [] );
  */
 $(function() {
 
-    // Remove anchor default functionality
-    $( '.nolink' ).on( 'click', function() {
-
-        return false;
-
-    });
 
 });
 
@@ -39,7 +33,7 @@ var generateFavicon = function( colors ) {
 
     // Four different layouts based on how many colors are in the palette
     // Could possibly be done algorithmically but I'm not smart enough
-    switch (count) {
+    switch ( count ) {
 
         case 2:
             ctx.fillStyle = "#" + colors[0];

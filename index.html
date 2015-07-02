@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en-us" data-ng-app="colorhelper">
 
     <head>
@@ -20,75 +21,72 @@
             <!-- Header -->
             <header id="main-header">
 
-                <svg id="header-svg" data-ng-controller="SVGController" viewBox="0 0 100 100" preserveAspectRatio="none">
+                <!-- Hex codes and color options -->
+                <ul>
 
-                    <!-- Track by $index to avoid duplicate key error https://docs.angularjs.org/error/ngRepeat/dupes -->
-                    <g data-ng-repeat="color in palette.colors track by $index" class="color">
+                    <li data-ng-repeat="color in palette.colors track by $index"
+                        data-ng-style="{ 'width' : (100 / palette.colors.length) + '%',
+                                         'color' : '#' + color }"
+                        class="color-tool-item">
+                        <span>#{{ color }}</span>
 
-                        <path data-index="{{ $index }}"
-                              data-ng-attr-fill="{{ '#' + color }}"
-                              data-ng-attr-d="{{ getColorPath( $index, palette.colors.length ) }}"
-                              data-ng-attr-fill="color"
-                              data-ng-index="$index"
-                              class="color-background">
-                        </path>
-
-                        <g>
-
-                            <!-- Overlay for edit color option. -->
-                            <rect data-ng-index="$index"
-                                  data-ng-attr-width="{{ ( 100 / palette.colors.length ) / 2 + 1 }}"
-                                  data-ng-attr-x="{{ $index * ( 100 / palette.colors.length ) }}"
-                                  data-ng-click="editColor( $index )"
-                                  fill="#fff"
-                                  height="25"
-                                  y="0"
-                                  class="color-overlay edit">
-                            </rect>
-
-                            <!-- Overlay for remove color option. -->
-                            <rect data-ng-index="$index"
-                                  data-ng-attr-width="{{ ( 100 / palette.colors.length ) / 2 + 1 }}"
-                                  data-ng-attr-x="{{ $index * ( 100 / palette.colors.length ) + ( 50 / palette.colors.length ) }}"
-                                  data-ng-click="removeColor( $index )"
-                                  fill="#fff"
-                                  height="25"
-                                  y="0"
-                                  class="color-overlay remove">
-
-                            </rect>
-
-                        </g>
-
-                    </g>
-
-                </svg>
-
-            </header>
-
-            <!-- Main content -->
-            <div id="palette-content">
-
-                <h1 id="palette-heading">{{ palette.title }}</h1>
-
-                <ul id="palette-meta" data-ng-hide="palette.modified">
-
-                    <li class="meta-item" data-ng-repeat="(key, value) in palette.meta track by $index" data-ng-attr-title="{{ key }}" data-ng-hide="value == 0">
-
-                        <img class="meta-icon" data-ng-src="resource/graphic/{{ key }}.png" alt="" /> {{ value }}
-
-                    </li>
-
-                    <li class="meta-item">
-
-                        <a data-ng-href="{{ palette.url }}" data-ng-attr-title="{{ ll( '%meta.colourlovers' ) }}"><img class="meta-icon" src="resource/graphic/outgoing-link.png" alt="" /><span>CL&#x2197;</span></a>
-
+                        <div class="color-tools">
+                            <a href="#">copy</a> /
+                            <a href="#">edit</a> /
+                            <a href="#"  data-ng-click="removeColor( $index )">remove</a>
+                        </div>
                     </li>
 
                 </ul>
 
+                <div id="palette-wrapper">
 
-            </div>
+                    <svg id="header-svg" data-ng-controller="SVGController" viewBox="0 0 100 100" preserveAspectRatio="none">
+
+                        <!-- Track by $index to avoid duplicate key error https://docs.angularjs.org/error/ngRepeat/dupes -->
+                        <g data-ng-repeat="color in palette.colors track by $index" class="color">
+
+                            <path data-index="{{ $index }}"
+                                  data-ng-attr-fill="{{ '#' + color }}"
+                                  data-ng-attr-d="{{ getColorPath( $index, palette.colors.length ) }}"
+                                  data-ng-attr-fill="color"
+                                  data-ng-index="$index"
+                                  class="color-background">
+                            </path>
+
+                        </g>
+
+                    </svg>
+
+                    <!-- Main content -->
+                    <div id="palette-content">
+
+                        <h1 id="palette-heading">{{ palette.title }}</h1>
+
+                        <ul id="palette-meta" data-ng-hide="palette.modified">
+
+                            <li class="meta-item" data-ng-repeat="(key, value) in palette.meta track by $index" data-ng-attr-title="{{ key }}" data-ng-hide="value == 0">
+
+                                <img class="meta-icon" data-ng-src="resource/graphic/{{ key }}.png" alt="" /> {{ value }}
+
+                            </li>
+
+                            <li class="meta-item">
+
+                                <a data-ng-href="{{ palette.url }}" data-ng-attr-title="{{ ll( '%meta.colourlovers' ) }}"><img class="meta-icon" src="resource/graphic/outgoing-link.png" alt="" /><span>CL&#x2197;</span></a>
+
+                            </li>
+
+                        </ul>
+
+                    </div>
+
+                </div>
+
+            </header>
+
+
+
 
             <!-- Footer -->
             <div id="footer">
@@ -122,7 +120,8 @@
                             {{ item.label }}
                         </a>
 
-                        <!-- Submenu
+                        <!-- Sub menu -->
+                <!--
                         <ul data-ng-show="item.subMenu">
                             <li data-ng-repeat="child in item.subMenu">
                                 <a data-ng-href="{{ child.href }}">

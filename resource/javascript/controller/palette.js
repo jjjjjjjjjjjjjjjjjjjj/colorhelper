@@ -13,13 +13,13 @@ function PaletteController( status, colorscheme, dataservice, palette, $scope ) 
 
             label: l( '%menu.new' ),
             href: '#'
-
         },
 
         1: {
 
             label: l( '%menu.add' ),
             href: '#'
+
 
         },
 

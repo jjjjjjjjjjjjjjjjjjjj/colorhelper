@@ -330,5 +330,8 @@ li {
 .color-tools-wrapper {
 
     height:                 62px;
+    position:               relative;
+    top:                    62px;
+    z-index:                5;
 
 }

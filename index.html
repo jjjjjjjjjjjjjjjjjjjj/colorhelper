@@ -89,7 +89,13 @@
             <!-- Palette tools -->
             <div class="palette-tools-wrapper" data-ng-controller="PaletteController">
 
-                <ul>
+                <svg id="palette-tools-background" viewBox="0 0 100 130" preserveAspectRatio="none">
+
+                    <path d="M0,0 l130,0 0,130 -130,-50z" fill="#ffffff"></path>
+
+                </svg>
+
+                <ul id="palette-tools">
 
                     <li data-ng-repeat="item in menu">
 

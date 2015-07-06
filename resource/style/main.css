@@ -141,7 +141,7 @@ li {
 
 #main-wrapper {
 
-    margin-top:             90px;
+    margin-top:             65px;
 
 }
 
@@ -374,3 +374,12 @@ li {
     border-right:           1px solid #e1e1e1;
 
 }
+
+.palette-tool-anchor {
+
+    display:                inline-block;
+    width:                  100%;
+    height:                 100%;
+
+}
+

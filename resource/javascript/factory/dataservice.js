@@ -14,6 +14,16 @@ function dataservice( $http, status ) {
 
     function getPalette( paletteType ) {
 
+        // Set status
+        status.set({
+
+            show: 1,
+            title: l( '%status.api.title' ),
+            message: l( '%status.api.message' ),
+            background: '#fffde7'
+
+        });
+
         // Make API call.
         return $http.get( '../resource/php/' + paletteType + '_palette_json.php')
             .then( onGetPaletteSuccess )

@@ -89,18 +89,24 @@
             <!-- Palette tools -->
             <div class="palette-tools-wrapper" data-ng-controller="PaletteController">
 
-                <svg id="palette-tools-background" viewBox="0 0 100 130" preserveAspectRatio="none">
-
-                    <path d="M0,0 l130,0 0,130 -130,-50z" fill="#ffffff"></path>
-
-                </svg>
-
                 <ul id="palette-tools">
 
-                    <li data-ng-repeat="item in menu">
+                    <li data-ng-repeat="item in menu"
+                        data-ng-init="fill = '#707070'">
 
-                        <a data-ng-href="{{ item.href }}">
-                            {{ item.label }}
+                        <a data-ng-href="{{ item.href }}"
+                           data-ng-mouseenter="fill = colorscheme"
+                           data-ng-mouseleave="fill = '#707070'"
+                           class="palette-tool-anchor">
+
+                            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="32" height="32" viewBox="0 0 32 32">
+                                <path data-ng-repeat="path in item.paths"
+                                      data-ng-attr-d="{{ path }}"
+                                      fill="{{  fill }}"></path>
+                            </svg>
+
+                            <p>{{ item.label }}</p>
+
                         </a>
 
                     </li>
@@ -109,6 +115,12 @@
                 </ul>
 
             </div>
+
+            <svg id="fancy-footer" viewBox="0 0 100 130" preserveAspectRatio="none">
+
+                <path d="M0,0 l130,0 0,130 -130,-50z" fill="#ffffff"></path>
+
+            </svg>
 
 
             <!-- Footer -->

@@ -6,25 +6,13 @@ MainController.$inject = [ 'status', 'colorscheme', 'dataservice', 'palette', '$
 
 function MainController( status, colorscheme, dataservice, palette, $scope ) {
 
-    activate();
+    function init() {
 
-    function activate() {
-
-        return getPalette( 'random' );
+        getPalette( 'random' );
 
     }
 
     function getPalette( paletteType ) {
-
-        // Set status
-        $scope.status = {
-
-            show: 1,
-            title: l( '%status.api.title' ),
-            message: l( '%status.api.message' ),
-            background: '#fffde7'
-
-        };
 
         return dataservice.getPalette( paletteType )
             .then( function( data ) {
@@ -32,10 +20,19 @@ function MainController( status, colorscheme, dataservice, palette, $scope ) {
                 palette.set( data );
                 colorscheme.update( data.colors[0] );
                 $scope.palette = data;
-                $scope.status.show = 0;
+                console.log( status.status );
+                console.log( $scope.status );
                 return $scope.palette;
 
             });
+
+    }
+
+    // Removes color from palette service and also updates the colorscheme.
+    function removeColor( i ) {
+
+        palette.remove( i );
+        colorscheme.update( $scope.palette.colors[0] );
 
     }
 
@@ -47,7 +44,7 @@ function MainController( status, colorscheme, dataservice, palette, $scope ) {
 
     // Updates the status (often synonymous with showing the status bar).
     $scope.$on( 'status-updated', function() {
-
+        console.log('status make');
         $scope.status = status.status;
 
     });
@@ -62,7 +59,7 @@ function MainController( status, colorscheme, dataservice, palette, $scope ) {
     // Remove color from the current palette.
     $scope.removeColor = function( i ) {
 
-        palette.remove( i );
+        removeColor( i );
 
     };
 
@@ -98,5 +95,7 @@ function MainController( status, colorscheme, dataservice, palette, $scope ) {
         }
 
     }
+
+    init();
 
 }

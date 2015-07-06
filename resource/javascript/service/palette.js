@@ -56,7 +56,7 @@ function palette( status, $rootScope ) {
     function save( palette ) {
 
         service.palettes.push( palette );
-        $rootScope.$broadcast( 'palettes.update' );
+        $rootScope.$broadcast( 'palette.updated' );
         // TODO: Save the palettes locally or in DB attached to user
 
     }

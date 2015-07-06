@@ -92,25 +92,26 @@
                 <ul id="palette-tools">
 
                     <li data-ng-repeat="item in menu"
-                        data-ng-init="fill = '#707070'">
+                        data-ng-init="fill = '#707070'"
+                        data-ng-mouseover="fill = colorscheme"
+                        data-ng-mouseleave="fill = '#707070'"
+                        data-ng-click="item.fn()">
 
                         <a data-ng-href="{{ item.href }}"
-                           data-ng-mouseenter="fill = colorscheme"
-                           data-ng-mouseleave="fill = '#707070'"
                            class="palette-tool-anchor">
 
                             <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="32" height="32" viewBox="0 0 32 32">
                                 <path data-ng-repeat="path in item.paths"
                                       data-ng-attr-d="{{ path }}"
+                                      class="palette-tool-icon"
                                       fill="{{  fill }}"></path>
                             </svg>
 
-                            <p>{{ item.label }}</p>
+                            <p data-ng-style="{ 'color': fill }">{{ item.label }}</p>
 
                         </a>
 
                     </li>
-
 
                 </ul>
 
@@ -118,7 +119,7 @@
 
             <svg id="fancy-footer" viewBox="0 0 100 130" preserveAspectRatio="none">
 
-                <path d="M0,0 l130,0 0,130 -130,-50z" fill="#ffffff"></path>
+                <path d="M0,0 l140,0 0,140 -140,-60z" fill="#ffffff"></path>
 
             </svg>
 
@@ -186,6 +187,7 @@
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+
         <script src="resource/javascript/l10n.js"></script>
         <script src="resource/javascript/localizations.js"></script>
         <script src="resource/javascript/app.js"></script>

@@ -45,7 +45,7 @@ function dataservice( $http, status ) {
             status.set ({
 
                 show: 1,
-                title: l( '%status.api.error.title' ),
+                title: l( '%serror.general.title' ),
                 message: l( '%status.api.error.message' ) + ' (' + error + ')',
                 background: '#CD8682'
 

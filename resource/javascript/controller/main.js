@@ -20,8 +20,6 @@ function MainController( status, colorscheme, dataservice, palette, $scope ) {
                 palette.set( data );
                 colorscheme.update( data.colors[0] );
                 $scope.palette = data;
-                console.log( status.status );
-                console.log( $scope.status );
                 return $scope.palette;
 
             });
@@ -44,7 +42,7 @@ function MainController( status, colorscheme, dataservice, palette, $scope ) {
 
     // Updates the status (often synonymous with showing the status bar).
     $scope.$on( 'status-updated', function() {
-        console.log('status make');
+
         $scope.status = status.status;
 
     });

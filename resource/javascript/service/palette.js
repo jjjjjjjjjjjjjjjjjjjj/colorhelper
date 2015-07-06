@@ -2,9 +2,9 @@ angular
     .module( 'colorhelper' )
     .service( 'palette', palette );
 
-palette.$inject = [ 'status', '$rootScope' ];
+palette.$inject = [ 'status', '$rootScope', 'dataservice' ];
 
-function palette( status, $rootScope ) {
+function palette( status, $rootScope, dataservice ) {
 
     var service = {
 
@@ -24,6 +24,8 @@ function palette( status, $rootScope ) {
 
         },
         palettes: [],
+        getNew: getNew,
+        addColor: addColor,
         set: set,
         save: save,
         remove: remove
@@ -32,6 +34,19 @@ function palette( status, $rootScope ) {
 
     return service;
     ///////////////
+
+    function getNew(paletteType) {
+
+        dataservice.getPalette(paletteType).then(function (response) {
+
+            service.set( response );
+
+            // Tell rootscope that palette has been updated.
+            $rootScope.$broadcast('palette-updated');
+
+        });
+
+    }
 
     function set( palette ) {
 
@@ -53,12 +68,69 @@ function palette( status, $rootScope ) {
 
     }
 
-    function save( palette ) {
+    function save(palette) {
 
-        service.palettes.push( palette );
-        $rootScope.$broadcast( 'palette.updated' );
+        service.palettes.push(palette);
+        $rootScope.$broadcast('palette-updated');
         // TODO: Save the palettes locally or in DB attached to user
 
+    }
+
+    function addColor(color) {
+
+        if (service.current.modified != true) {
+
+            // Mark palette as modified.
+            service.current.modified = true;
+
+            // Removes the link between current (modified) palette, and the one on CL.
+            service.current.url = '';
+
+            // Renames the palette, to signify that it has been modified.
+            service.current.title = service.current.title + ' ' + l('%palette.modified');
+
+        }
+
+        // Make sure that there's no more than seven colors left in the palette.
+        if (service.current.colors.length < 7) {
+
+            try {
+
+                // Adds the color
+                service.current.colors.push( color );
+
+                // Generate new favicon (maximum 5 colors).
+                generateFavicon(service.current.colors);
+
+                // Update scope.
+                $rootScope.$broadcast( 'palette-updated' );
+
+            } catch (error) {
+
+                // Set status (display error).
+                status.set({
+
+                    show: 1,
+                    title: l('%status.api.error.title'),
+                    message: l('%status.api.error.message') + ' (' + error + ')',
+                    background: '#CD8682'
+
+                });
+
+            }
+        } else if ( service.current.colors.length == 7 ) {
+
+            // Set status (display error).
+            status.set({
+
+                show: 1,
+                title: l('%error.general.title'),
+                message: l('%palette.error.add.message'),
+                background: '#CD8682'
+
+            });
+
+        }
     }
 
     function remove( index ) {

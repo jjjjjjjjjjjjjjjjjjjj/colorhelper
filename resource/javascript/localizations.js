@@ -21,6 +21,7 @@ String.toLocaleString({
 
         "%palette.modified": "(modifierad)",
         "%palette.error.remove.message": "Du måste ha minst en färg i paletten!",
+        "%palette.error.add.message": "Du får som mest ha minst sju färger i paletten!",
 
         "%menu.add": "Lägg till färg",
         "%menu.new": "Ny palett",
@@ -50,6 +51,7 @@ String.toLocaleString({
 
         "%palette.modified": "(modified)",
         "%palette.error.remove.message": "You need at least one color in the palette!",
+        "%palette.error.add.message": "The palette can contain seven colors at most!",
 
         "%menu.add": "Add color",
         "%menu.new": "New palette",
@@ -78,6 +80,7 @@ String.toLocaleString({
 
         "%palette.modified": "(変更された)",
         "%palette.error.remove.message": "You need at least one color in the palette!",
+        "%palette.error.add.message": "The palette can contain seven colors at most!",
 
         "%menu.add": "カラーをアッドする",
         "%menu.new": "新しい配色",

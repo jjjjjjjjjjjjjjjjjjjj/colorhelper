@@ -2,27 +2,13 @@ angular
     .module( 'colorhelper' )
     .controller( 'MainController', MainController );
 
-MainController.$inject = [ 'status', 'colorscheme', 'dataservice', 'palette', '$scope' ];
+MainController.$inject = [ 'status', 'colorscheme', 'palette', '$scope' ];
 
-function MainController( status, colorscheme, dataservice, palette, $scope ) {
+function MainController( status, colorscheme, palette, $scope ) {
 
     function init() {
 
-        getPalette( 'random' );
-
-    }
-
-    function getPalette( paletteType ) {
-
-        return dataservice.getPalette( paletteType )
-            .then( function( data ) {
-
-                palette.set( data );
-                colorscheme.update( data.colors[0] );
-                $scope.palette = data;
-                return $scope.palette;
-
-            });
+        palette.getNew( 'random' );
 
     }
 
@@ -34,9 +20,21 @@ function MainController( status, colorscheme, dataservice, palette, $scope ) {
 
     }
 
+    function addColor( color ) {
+
+        palette.addColor( color );
+
+    }
+
+    $scope.addColor = function( color) {
+
+        addColor( color );
+
+    }
+
     $scope.getPalette = function( paletteType ) {
 
-        getPalette( paletteType );
+        palette.getNew( paletteType );
 
     }
 
@@ -51,6 +49,15 @@ function MainController( status, colorscheme, dataservice, palette, $scope ) {
     $scope.$on( 'colorscheme-updated', function() {
 
         $scope.colorscheme = { details: '#' + colorscheme.details };
+
+    });
+
+    // Update the scope to match current palette.
+    $scope.$on( 'palette-updated', function() {
+
+        $scope.palette = palette.current;
+        //console.log( palette.current );
+        colorscheme.update( palette.current.colors[0] );
 
     });
 

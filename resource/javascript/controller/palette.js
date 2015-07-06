@@ -45,13 +45,13 @@ function PaletteController( $rootScope, status, colorscheme, dataservice, palett
 
     function generateNewPalette() {
 
-        return $scope.getPalette( 'random' );
+        return palette.getNew( 'random' );
 
     }
 
-    function addColor() {
+    function addColor( color ) {
 
-        return $scope.addColor();
+        return palette.addColor( color );
 
     }
 

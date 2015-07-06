@@ -2,9 +2,9 @@ angular
     .module( 'colorhelper' )
     .factory( 'dataservice', dataservice );
 
-dataservice.$inject = [ '$http', 'status', 'palette' ];
+dataservice.$inject = [ '$rootScope', '$http', 'status' ];
 
-function dataservice( $http, status ) {
+function dataservice( $rootScope, $http, status ) {
 
     return {
 
@@ -34,7 +34,6 @@ function dataservice( $http, status ) {
             // Hide status bar.
             status.hide();
 
-            // Return palette object.
             return response.data[0];
 
         }

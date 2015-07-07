@@ -228,3 +228,6 @@ if (typeof document !== undef_type) {
 }
 
 }());
+
+// \default
+String.defaultLocale = "en";

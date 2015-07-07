@@ -1,5 +1,5 @@
 String.toLocaleString({
-    "se": {
+    "sv": {
 
         "%app.name": "färghjälparen",
         "%app.title": "färghjälparen, färgschemeinspiration",
@@ -25,7 +25,7 @@ String.toLocaleString({
 
         "%menu.add": "Lägg till färg",
         "%menu.new": "Ny palett",
-        "%menu.save": "Spara"
+        "%menu.save": "Favorit"
 
 
     },
@@ -55,7 +55,7 @@ String.toLocaleString({
 
         "%menu.add": "Add color",
         "%menu.new": "New palette",
-        "%menu.save": "Save"
+        "%menu.save": "Favorite"
 
     },
     "ja": {
@@ -84,7 +84,7 @@ String.toLocaleString({
 
         "%menu.add": "カラーをアッドする",
         "%menu.new": "新しい配色",
-        "%menu.save": "セーブ"
+        "%menu.save": "お気に入り"
 
 
     }

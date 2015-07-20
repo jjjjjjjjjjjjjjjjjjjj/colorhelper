@@ -20,7 +20,7 @@ function status( $rootScope ) {
         set: set,
         hide: hide
 
-    }
+    };
 
     return service;
     ///////////////
@@ -41,6 +41,8 @@ function status( $rootScope ) {
 
         service.status.show = 0;
 
+        // Broadcast that it's been updated.
+        $rootScope.$broadcast( 'status-updated' );
 
     }
 

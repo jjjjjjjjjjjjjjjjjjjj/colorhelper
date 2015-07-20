@@ -31,7 +31,9 @@ String.toLocaleString({
 
         "%dialog.add.color": "Välj färg",
         "%dialog.add.color.confirm": "Lägg till",
-        "%dialog.cancel": "Avbryt"
+        "%dialog.cancel": "Avbryt",
+        "%dialog.edit.color": "Redigera färg",
+        "%dialog.confirm": "Bekräfta"
 
 
     },
@@ -67,7 +69,9 @@ String.toLocaleString({
 
         "%dialog.add.color": "Choose color",
         "%dialog.add.color.confirm": "Add color",
-        "%dialog.cancel": "Cancel"
+        "%dialog.cancel": "Cancel",
+        "%dialog.edit.color": "Edit color",
+        "%dialog.confirm": "Confirm"
 
     },
     "ja": {
@@ -102,7 +106,9 @@ String.toLocaleString({
 
         "%dialog.add.color": "色を選んでください。",
         "%dialog.add.color.confirm": "アッドする",
-        "%dialog.cancel": "キャンセル"
+        "%dialog.cancel": "キャンセル",
+        "%dialog.edit.color": "色をエディット",
+        "%dialog.confirm": "確認する"
 
 
     }

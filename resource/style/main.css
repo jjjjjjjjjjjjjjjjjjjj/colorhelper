@@ -464,6 +464,12 @@ li {
 
 }
 
+.popup-inner h2 {
+
+    text-align:             left;
+
+}
+
 /* Top border */
 .popup-inner-wrapper ul {
 
@@ -511,6 +517,11 @@ li {
 
 }
 
+input.color {
+
+    background:             #EBEBEB;
+
+}
 
 .cp-color-picker {
 

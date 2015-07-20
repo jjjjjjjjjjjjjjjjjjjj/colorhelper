@@ -26,6 +26,24 @@ function MainController( status, colorscheme, palette, $scope ) {
 
     }
 
+    // Value used to show and hide dialog.
+    $scope.showEditDialog = {
+        0: 0,
+        1: 0,
+        2: 0,
+        3: 0,
+        4: 0,
+        5: 0,
+        6: 0
+    };
+
+    // Shows and hide edit dialog.
+    $scope.toggleEditDialog = function( i ) {
+
+        return $scope.showEditDialog[ i ] = !$scope.showEditDialog[ i ];
+
+    };
+
     $scope.addColor = function( color) {
 
         addColor( color );

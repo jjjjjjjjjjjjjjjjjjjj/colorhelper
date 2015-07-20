@@ -16,10 +16,13 @@ function cAddDialog( palette, $rootScope ) {
             show: '='
 
         },
-        link: function( scope, el, attrs ){
+        link: function( scope ){
+
+            scope.id = "add-color-input";
+            scope.hex = '#EBEBEB';
 
             // Initialize colorpicker on our input.
-            $('.popup-inner').find( '.color' ).colorPicker();
+            $( '#add-color-input' ).colorPicker();
 
             // Strings for the dialog.
             scope.strings = {
@@ -44,7 +47,7 @@ function cAddDialog( palette, $rootScope ) {
             // Adds color to the palette and closes the dialog.
             scope.execute = function() {
 
-                var color = $('.popup-inner').find( '.color' ).val().substring( 1 );
+                var color = $('#add-color-input').val().substring( 1 );
                 palette.addColor( color );
                 scope.hide();
 

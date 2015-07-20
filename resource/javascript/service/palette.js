@@ -28,6 +28,7 @@ function palette( status, $rootScope, dataservice ) {
         addColor: addColor,
         set: set,
         save: save,
+        edit: edit,
         remove: remove
 
     };
@@ -45,34 +46,6 @@ function palette( status, $rootScope, dataservice ) {
             $rootScope.$broadcast('palette-updated');
 
         });
-
-    }
-
-    function set( palette ) {
-
-        // Set current palette.
-        service.current = palette;
-
-        // Set current palette meta.
-        service.current.meta = {
-
-            rank: service.current.rank,
-            views: service.current.numViews,
-            hearts: service.current.numHearts,
-            comments: service.current.numComments
-
-        };
-
-        // Generate new favicon.
-        generateFavicon( service.current.colors );
-
-    }
-
-    function save( palette ) {
-
-        service.palettes.push( palette );
-        $rootScope.$broadcast( 'palette-updated' );
-        // TODO: Save the palettes locally or in DB attached to user
 
     }
 
@@ -133,6 +106,58 @@ function palette( status, $rootScope, dataservice ) {
         }
     }
 
+    function set( palette ) {
+
+        // Set current palette.
+        service.current = palette;
+
+        // Set current palette meta.
+        service.current.meta = {
+
+            rank: service.current.rank,
+            views: service.current.numViews,
+            hearts: service.current.numHearts,
+            comments: service.current.numComments
+
+        };
+
+        // Generate new favicon.
+        generateFavicon( service.current.colors );
+
+    }
+
+    function save( palette ) {
+
+        service.palettes.push( palette );
+        $rootScope.$broadcast( 'palette-updated' );
+        // TODO: Save the palettes locally or in DB attached to user
+
+    }
+
+    function edit( i, color ) {
+
+        // If the palette isn't already modified.
+        if( service.current.modified != true) {
+
+            // Mark palette as modified.
+            service.current.modified = true;
+
+            // Removes the link between current (modified) palette, and the one on CL.
+            service.current.url = '';
+
+            // Renames the palette, to signify that it has been modified.
+            service.current.title = service.current.title + ' ' + l( '%palette.modified' );
+
+        }
+
+        // Replace color.
+        service.current.colors[ i ] = color;
+
+        // Update scope.
+        $rootScope.$broadcast( 'palette-updated' );
+
+    }
+
     function remove( index ) {
 
         // If the palette isn't already modified.
@@ -159,6 +184,9 @@ function palette( status, $rootScope, dataservice ) {
 
                 // Generate new favicon.
                 generateFavicon( service.current.colors );
+
+                // Update scope.
+                $rootScope.$broadcast( 'palette-updated' );
 
             } catch( error ) {
 

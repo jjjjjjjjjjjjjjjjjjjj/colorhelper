@@ -3,7 +3,7 @@ A simple web application to aid you in your color-seeking quest.
 
 ### Main functionality
 * Generate random color palettes, using colourlovers.com API,
-* CRUD palettes,
+* CRUD palettes (in the works),
 * Colorpicker.
 
 ### Supported languages

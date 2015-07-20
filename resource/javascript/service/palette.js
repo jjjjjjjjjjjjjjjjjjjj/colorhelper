@@ -35,9 +35,9 @@ function palette( status, $rootScope, dataservice ) {
     return service;
     ///////////////
 
-    function getNew(paletteType) {
+    function getNew( paletteType ) {
 
-        dataservice.getPalette(paletteType).then(function (response) {
+        dataservice.getPalette( paletteType ).then( function ( response ) {
 
             service.set( response );
 
@@ -68,17 +68,17 @@ function palette( status, $rootScope, dataservice ) {
 
     }
 
-    function save(palette) {
+    function save( palette ) {
 
-        service.palettes.push(palette);
-        $rootScope.$broadcast('palette-updated');
+        service.palettes.push( palette );
+        $rootScope.$broadcast( 'palette-updated' );
         // TODO: Save the palettes locally or in DB attached to user
 
     }
 
-    function addColor(color) {
+    function addColor( color ) {
 
-        if (service.current.modified != true) {
+        if ( service.current.modified != true ) {
 
             // Mark palette as modified.
             service.current.modified = true;
@@ -92,7 +92,7 @@ function palette( status, $rootScope, dataservice ) {
         }
 
         // Make sure that there's no more than seven colors left in the palette.
-        if (service.current.colors.length < 7) {
+        if ( service.current.colors.length < 7 ) {
 
             try {
 
@@ -105,7 +105,7 @@ function palette( status, $rootScope, dataservice ) {
                 // Update scope.
                 $rootScope.$broadcast( 'palette-updated' );
 
-            } catch (error) {
+            } catch ( error ) {
 
                 // Set status (display error).
                 status.set({

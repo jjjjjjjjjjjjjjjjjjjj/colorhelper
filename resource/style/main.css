@@ -22,7 +22,7 @@ h3,
 p {
 
     text-decoration:        none;
-    color:                  #1a1a1a;
+    color:                  #3a3a3a;
     margin:                 0;
     padding:                0;
 
@@ -112,15 +112,22 @@ li {
     z-index:                5;
     opacity:                1;
 
-    -webkit-transition:     linear 1s;
-    transition:             linear 1s;
-
 }
 
 
 #status-bar.ng-hide {
 
     opacity:                0;
+    -webkit-transition:     linear 1s 1s;
+    transition:             opacity 0.5s;
+
+
+}
+
+#status-bar:not(.ng-hide) {
+
+    opacity:                1 !important;
+    transition:             none;
 
 }
 
@@ -326,6 +333,14 @@ li {
     width:                  100%;
     height:                 100%;
 
+    text-shadow:            0 0 1px rgba(107, 107, 107, 1);
+
+}
+
+.color-tools a {
+
+    color:                  #ffffff;
+
 }
 
 .color-tool-item:hover span {
@@ -353,8 +368,8 @@ li {
 .palette-tools-wrapper {
 
     position:               relative;
-    margin:                 5px 0px;
-    height:                 130px;
+    margin:                 5px 0;
+    height:                 135px;
     background-color:       #ffffff;
 
 }
@@ -368,7 +383,7 @@ li {
 
 #palette-tools {
 
-    padding:                30px 0px;
+    padding:                30px 0;
 
 }
 
@@ -377,7 +392,7 @@ li {
     float:                  left;
     width:                  33%;
     text-align:             center;
-    padding:                10px 0px;
+    padding:                10px 0;
     font-size:              14px;
 
 }
@@ -388,7 +403,7 @@ li {
 
 }
 
-.palette-tool-anchor {
+#palette-tools .anchor {
 
     display:                inline-block;
     width:                  100%;
@@ -396,13 +411,123 @@ li {
 
 }
 
-.palette-tool-icon,
-.palette-tool-anchor svg {
+#palette-tools .icon,
+#palette-tools .anchor svg {
 
     -webkit-transition:     linear 0.2s;
     transition:             linear 0.2s;
 
 }
 
+#palette-tools .label {
+
+    margin-top:             5px;
+
+}
+
+.popup-wrapper {
+
+    position:               fixed;
+    top:                    0;
+    left:                   0;
+    height:                 100%;
+    width:                  100%;
+    z-index:                6;
+
+}
+
+.popup-overlay {
+
+    position:               absolute;
+    top:                    0;
+    left:                   0;
+    height:                 100%;
+    width:                  100%;
+    z-index:                6;
+    background-image:       url('/resource/graphic/88w.png');
+
+}
+
+.popup-inner-wrapper {
+
+    z-index:                7;
+    position:               absolute;
+
+    /* Center the dialog */
+    top:                    33%;
+    left:                   50%;
+    transform:              translate(-50%, -50%);
+    -webkit-transform:      translate(-50%, -50%);
+    -moz-transform:         translate(-50%, -50%);
+
+    background-color:       #fff;
+
+}
+
+/* Top border */
+.popup-inner-wrapper ul {
+
+    position:               absolute;
+    top:                    0;
+    left:                   0;
+    margin-left:            -2%;
+    width:                  104%;
+    height:                 7px;
+
+}
+
+.popup-inner-wrapper ul li {
+
+    display:                inline-block;
+    float:                  left;
+    height:                 100%;
+
+}
+
+.popup-inner {
+
+    padding:                40px;
+
+}
+
+.popup-inner input[type=text] {
+
+    border:                 none;
+    height:                 40px;
+    padding:                10px;
+    margin:                 30px 0 0 0;
+    z-index:                11;
+    line-height:            100%;
+
+}
+
+.popup-inner button,
+.popup-inner input[type=submit] {
+
+    padding:                10px 5px;
+    margin:                 0;
+    border:                 0;
+    background:             transparent;
+
+}
 
 
+.cp-color-picker {
+
+    z-index:                10;
+    background-color:       #ffffff !important;
+
+}
+
+.cp-alpha {
+
+    display:                none !important;
+
+}
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
+}

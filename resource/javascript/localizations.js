@@ -25,7 +25,13 @@ String.toLocaleString({
 
         "%menu.add": "Lägg till färg",
         "%menu.new": "Ny palett",
-        "%menu.save": "Favorit"
+        "%menu.save": "Favorit",
+
+        "%remove.success": "En färg borttagen.",
+
+        "%dialog.add.color": "Välj färg",
+        "%dialog.add.color.confirm": "Lägg till",
+        "%dialog.cancel": "Avbryt"
 
 
     },
@@ -55,7 +61,13 @@ String.toLocaleString({
 
         "%menu.add": "Add color",
         "%menu.new": "New palette",
-        "%menu.save": "Favorite"
+        "%menu.save": "Favorite",
+
+        "%remove.success": "Removed one color.",
+
+        "%dialog.add.color": "Choose color",
+        "%dialog.add.color.confirm": "Add color",
+        "%dialog.cancel": "Cancel"
 
     },
     "ja": {
@@ -84,7 +96,13 @@ String.toLocaleString({
 
         "%menu.add": "カラーをアッドする",
         "%menu.new": "新しい配色",
-        "%menu.save": "お気に入り"
+        "%menu.save": "お気に入り",
+
+        "%remove.success": "カラーを一つ消しました。",
+
+        "%dialog.add.color": "色を選んでください。",
+        "%dialog.add.color.confirm": "アッドする",
+        "%dialog.cancel": "キャンセル"
 
 
     }

@@ -30,19 +30,19 @@ function MainController( status, colorscheme, palette, $scope ) {
 
         addColor( color );
 
-    }
+    };
 
     $scope.getPalette = function( paletteType ) {
 
         palette.getNew( paletteType );
 
-    }
+    };
 
     // Updates the status (often synonymous with showing the status bar).
     $scope.$on( 'status-updated', function() {
 
         $scope.status = status.status;
-
+        
     });
 
     // Update the colors of the website
@@ -99,7 +99,7 @@ function MainController( status, colorscheme, palette, $scope ) {
 
         }
 
-    }
+    };
 
     init();
 

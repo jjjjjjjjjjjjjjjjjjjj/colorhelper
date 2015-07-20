@@ -1,0 +1,24 @@
+<div class="popup-wrapper" data-ng-show="show">
+
+    <div class="popup-overlay" data-ng-click="hide()"></div>
+
+    <div class="popup-inner-wrapper">
+
+        <ul>
+            <li data-ng-repeat="color in colors track by $index"
+                data-ng-style="{'width': colWidth + '%', 'background': '#' + color }"></li>
+        </ul>
+
+        <div class="popup-inner">
+
+            <h2>{{ strings.title }}</h2>
+
+                <input class="color no-alpha" type="text" value="#EBEBEB" data-ng-model="hex" />
+                <input type="submit" data-ng-click="execute()" value="{{ strings.execute }}" />
+                <button data-ng-click="hide()">{{ strings.cancel }}</button>
+
+        </div>
+
+    </div>
+
+</div>

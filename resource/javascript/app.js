@@ -4,17 +4,30 @@
 var colorhelper = angular.module( 'colorhelper', [] );
 
 /*
- * document.onload
+ * Disable http get cache for IE11 bug
  */
-$(function() {
+angular
+    .module( 'colorhelper' )
+    .config( config );
 
+function config( $httpProvider ) {
 
-});
+    //initialize get if not there
+    if (!$httpProvider.defaults.headers.get) {
+        $httpProvider.defaults.headers.get = {};
+    }
+
+    //disable IE ajax request caching
+    $httpProvider.defaults.headers.get['If-Modified-Since'] = 'Mon, 26 Jul 1997 05:00:00 GMT';
+
+}
+
 
 /*
  * Shorthand for l10n.js localization function
  */
 var l = function (string) {
+
     return string.toLocaleString();
 };
 

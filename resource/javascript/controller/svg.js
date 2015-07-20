@@ -7,7 +7,7 @@ SVGController.$inject = [ '$scope' ];
 function SVGController( $scope ) {
 
     // Defined here to avoid excessive calls to DOM.
-    var svgHeader = $( '#header-svg');
+    var svgHeader = document.getElementById( '#svgHeader' );
 
     // Returns svg path for current color column
     $scope.getColorPath = function( i, numCols ) {

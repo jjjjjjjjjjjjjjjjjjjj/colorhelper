@@ -156,6 +156,8 @@ function palette( status, $rootScope, dataservice ) {
         // Update scope.
         $rootScope.$broadcast( 'palette-updated' );
 
+        // Generate new favicon (maximum 5 colors).
+        generateFavicon( service.current.colors );
     }
 
     function remove( index ) {

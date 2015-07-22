@@ -40,6 +40,8 @@ function MainController( status, colorscheme, palette, $scope ) {
     // Shows and hide edit dialog.
     $scope.toggleEditDialog = function( i ) {
 
+        // Let our edit dialogs know the new color palette.
+        $scope.$broadcast( 'palette-updated' );
         return $scope.showEditDialog[ i ] = !$scope.showEditDialog[ i ];
 
     };
@@ -74,7 +76,6 @@ function MainController( status, colorscheme, palette, $scope ) {
     $scope.$on( 'palette-updated', function() {
 
         $scope.palette = palette.current;
-        //console.log( palette.current );
         colorscheme.update( palette.current.colors[0] );
 
     });

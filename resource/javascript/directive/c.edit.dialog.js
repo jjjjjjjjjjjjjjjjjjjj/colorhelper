@@ -2,9 +2,9 @@ angular
     .module( 'colorhelper' )
     .directive( 'cEditDialog', cEditDialog );
 
-cEditDialog.$inject = [ 'palette' ];
+cEditDialog.$inject = [ 'palette', '$rootScope'  ];
 
-function cEditDialog( palette ) {
+function cEditDialog( palette, $rootScope ) {
 
     return {
 
@@ -17,11 +17,11 @@ function cEditDialog( palette ) {
         },
         link: function( scope ){
 
-            scope.id = 'edit-color-' + scope.idx;
-            scope.hex = '#' + palette.current.colors[ scope.idx ];
+            // Initialize value for top border columns.
+            scope.colWidth = 100;
 
-            // Initialize colorpicker on our input.
-            $( '#edit-color-' + scope.idx ).colorPicker();
+            // ID used for DOM element.
+            scope.id = 'edit-color-' + scope.idx;
 
             // Strings for the dialog.
             scope.strings = {
@@ -32,11 +32,13 @@ function cEditDialog( palette ) {
 
             };
 
-            // Initialize value for top border columns.
-            scope.colWidth = 100;
-
             // Gives us some colors to work with (current palette's).
-            scope.$on( 'palette-updated', function(  ) {
+            scope.$on( 'palette-updated', function() {
+
+                scope.hex = '#' + palette.current.colors[ scope.idx ];
+
+                // Initialize colorpicker on our input.
+                $( '#' + scope.id ).colorPicker({color: scope.hex });
 
                 scope.colors =  palette.current.colors;
                 scope.colWidth = 100 / scope.colors.length;
@@ -55,6 +57,7 @@ function cEditDialog( palette ) {
             // Hides the dialog
             scope.hide = function() {
 
+                scope.hex = '';
                 scope.show = false;
 
             };

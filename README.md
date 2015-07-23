@@ -12,13 +12,13 @@ A simple web application to aid you in your color-seeking quest.
 * Japanese.
 
 ### TODO
-* Colorpicker dialog for edit & add color,
-* save using localstorage & shareable palettes,
-* further responsiveness,
-* add menu and mini-settings,
-* separate localizations into own files,
-* changeable name,
-* re-organize controllers, directives, services, factories, based on belonging rather than type.
+* ☑ ~~Colorpicker dialog for edit & add color~~,
+* ☐ save using localstorage & shareable palettes,
+* ☐ further responsiveness,
+* ☐ add menu and mini-settings,
+* ☐ separate localizations into own files,
+* ☐ changeable
+* ☐ re-organize controllers, directives, services, factories, based on belonging rather than type.
 
 ### Credits
 * [COLOURlovers](http://www.colourlovers.com/) (API),

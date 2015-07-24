@@ -81,11 +81,11 @@
 
                         <div class="color-tools">
                             <a href="#" data-ng-click="copy( '#' + color )">copy</a> /
-                            <a href="#" data-ng-click="toggleEditDialog( $index )">edit</a> /
+                            <a href="#" data-ng-click="toggleColorEditDialog( $index )">edit</a> /
                             <a href="#" data-ng-click="removeColor( $index )">remove</a>
                         </div>
 
-                        <c-edit-dialog data-show="showEditDialog[ $index ]" data-hexcode="'#' + color" data-idx="$index"></c-edit-dialog>
+                        <c-edit-dialog data-show="showColorEditDialog[ $index ]" data-idx="$index"></c-edit-dialog>
 
                     </li>
 
@@ -109,11 +109,10 @@
 
                     </svg>
 
-                    <!-- Main content -->
+                    <!-- Palette meta -->
                     <div id="palette-content">
 
-                        <h1 id="palette-heading">{{ palette.title }}</h1>
-
+                        <h1 id="palette-heading" data-ng-click="toggleNameEditDialog()" data-ng-title="{{ ll( '%edit.name' ) }}">{{ palette.title }}</h1>
 
                         <ul id="palette-meta" data-ng-hide="palette.modified">
 
@@ -130,6 +129,8 @@
                             </li>
 
                         </ul>
+
+                        <pn-edit-dialog data-show="showNameEditDialog"></pn-edit-dialog>
 
                     </div>
 
@@ -213,6 +214,7 @@
 
         <script src="resource/javascript/directive/c.add.dialog.js"></script>
         <script src="resource/javascript/directive/c.edit.dialog.js"></script>
+        <script src="resource/javascript/directive/pn.edit.dialog.js"></script>
 
     </body>
 

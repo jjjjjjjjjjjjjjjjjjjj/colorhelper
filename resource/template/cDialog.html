@@ -13,7 +13,7 @@
 
             <h2>{{ strings.title }}</h2>
 
-                <input id="{{ id }}" class="color no-alpha" type="text" value="{{ hex }}" />
+                <input id="{{ id }}" class="color no-alpha" type="text" data-ng-model="strings.inputValue" />
                 <input type="submit" data-ng-click="execute()" value="{{ strings.execute }}" />
                 <button data-ng-click="hide()">{{ strings.cancel }}</button>
 

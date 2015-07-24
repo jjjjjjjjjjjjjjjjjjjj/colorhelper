@@ -27,7 +27,7 @@ function MainController( status, colorscheme, palette, $scope ) {
     }
 
     // Value used to show and hide dialog.
-    $scope.showEditDialog = {
+    $scope.showColorEditDialog = {
         0: 0,
         1: 0,
         2: 0,
@@ -37,14 +37,25 @@ function MainController( status, colorscheme, palette, $scope ) {
         6: 0
     };
 
+    $scope.showNameEditDialog = false;
+
     // Shows and hide edit dialog.
-    $scope.toggleEditDialog = function( i ) {
+    $scope.toggleNameEditDialog = function( ) {
+
+        console.log( $scope.showNameEditDialog);
+        return $scope.showNameEditDialog = !$scope.showNameEditDialog;
+
+    };
+
+    // Shows and hide edit dialog.
+    $scope.toggleColorEditDialog = function( i ) {
 
         // Let our edit dialogs know the new color palette.
         $scope.$broadcast( 'palette-updated' );
-        return $scope.showEditDialog[ i ] = !$scope.showEditDialog[ i ];
+        return $scope.showColorEditDialog[ i ] = !$scope.showColorEditDialog[ i ];
 
     };
+
 
     $scope.addColor = function( color) {
 

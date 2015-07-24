@@ -2,9 +2,9 @@ angular
     .module( 'colorhelper' )
     .controller( 'PaletteController', PaletteController );
 
-PaletteController.$inject = [ '$rootScope', 'colorscheme', 'palette', '$scope' ];
+PaletteController.$inject = [ 'colorscheme', 'palette', '$scope' ];
 
-function PaletteController(  $rootScope, colorscheme, palette, $scope ) {
+function PaletteController(  colorscheme, palette, $scope ) {
 
     // Menu structure and content
     $scope.menu = {

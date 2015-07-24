@@ -49,7 +49,7 @@ function SVGController( $scope ) {
 
        return iconWidth;
 
-    }
+    };
 
     $scope.centerIcon = function( i, colorCount ) {
 

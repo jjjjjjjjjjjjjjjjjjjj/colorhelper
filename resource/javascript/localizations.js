@@ -33,6 +33,7 @@ String.toLocaleString({
         "%dialog.add.color.confirm": "Lägg till",
         "%dialog.cancel": "Avbryt",
         "%dialog.edit.color": "Redigera färg",
+        "%dialog.edit.name": "Ändra namn",
         "%dialog.confirm": "Bekräfta",
 
         "%edit.title": "Klicka för att ändra titel"
@@ -73,6 +74,7 @@ String.toLocaleString({
         "%dialog.add.color.confirm": "Add color",
         "%dialog.cancel": "Cancel",
         "%dialog.edit.color": "Edit color",
+        "%dialog.edit.name": "Change name",
         "%dialog.confirm": "Confirm",
 
         "%edit.title": "Click to change title"
@@ -112,6 +114,7 @@ String.toLocaleString({
         "%dialog.add.color.confirm": "アッドする",
         "%dialog.cancel": "キャンセル",
         "%dialog.edit.color": "色をエディット",
+        "%dialog.edit.name": "Edit name",
         "%dialog.confirm": "確認する",
 
         "%edit.title": "Klicka för att ändra titel"

@@ -249,19 +249,31 @@ li {
 
 }
 
+
+
 #palette-content #palette-heading {
 
     position:               relative;
     top:                    -30px;
     left:                   0;
     z-index:                4;
-    padding:                15px 25px 0 0;
+    padding:                0;
+    display:                inline-block;
 
     font-size:              1.6em;
     font-weight:            200;
     color:                  #4d4d4d;
 
+    border-radius:          3px;
+    cursor:                 pointer;
 }
+
+#palette-content #palette-heading:hover {
+
+    background:             #f0f0f0;
+
+}
+
 
 #palette-content #palette-meta {
 

@@ -28,7 +28,8 @@ function palette( status, $rootScope, dataservice ) {
         addColor: addColor,
         set: set,
         save: save,
-        edit: edit,
+        editColor: editColor,
+        editName: editName,
         remove: remove
 
     };
@@ -134,7 +135,7 @@ function palette( status, $rootScope, dataservice ) {
 
     }
 
-    function edit( i, color ) {
+    function editColor( i, color ) {
 
         // If the palette isn't already modified.
         if( service.current.modified != true) {
@@ -158,6 +159,28 @@ function palette( status, $rootScope, dataservice ) {
 
         // Generate new favicon (maximum 5 colors).
         generateFavicon( service.current.colors );
+
+    }
+
+    function editName( name ) {
+
+        // If the palette isn't already modified.
+        if( service.current.modified != true) {
+
+            // Mark palette as modified.
+            service.current.modified = true;
+
+            // Removes the link between current (modified) palette, and the one on CL.
+            service.current.url = '';
+
+        }
+
+        // Update name.
+        service.current.title = name;
+
+        // Broadcast.
+        $rootScope.$broadcast( 'palette-updated' );
+
     }
 
     function remove( index ) {

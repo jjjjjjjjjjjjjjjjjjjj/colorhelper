@@ -17,7 +17,7 @@ A simple web application to aid you in your color-seeking quest.
 * ☐ further responsiveness,
 * ☐ add menu and mini-settings,
 * ☐ separate localizations into own files,
-* ☐ changeable
+* ☑ ~~changeable name~~
 * ☐ re-organize controllers, directives, services, factories, based on belonging rather than type.
 
 ### Credits

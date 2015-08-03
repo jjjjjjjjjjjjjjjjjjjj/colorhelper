@@ -13,7 +13,7 @@ A simple web application to aid you in your color-seeking quest.
 
 ### TODO
 * ☑ ~~Colorpicker dialog for edit & add color~~,
-* ☐ save using localstorage & shareable palettes,
+* ☑ ~~save using localstorage & shareable palettes,~~
 * ☐ further responsiveness,
 * ☐ add menu and mini-settings,
 * ☐ separate localizations into own files,

@@ -2,9 +2,9 @@ angular
     .module( 'colorhelper' )
     .service( 'palette', palette );
 
-palette.$inject = [ 'status', '$rootScope', 'dataservice' ];
+palette.$inject = [ 'status', '$rootScope', 'dataservice', 'localStorageService' ];
 
-function palette( status, $rootScope, dataservice ) {
+function palette( status, $rootScope, dataservice, localStorageService ) {
 
     var service = {
 
@@ -23,11 +23,14 @@ function palette( status, $rootScope, dataservice ) {
             modified: 0
 
         },
-        palettes: [],
         getNew: getNew,
         addColor: addColor,
         set: set,
-        save: save,
+        initFavorites: initFavorites,
+        isFavorite: isFavorite,
+        favorites: [],
+        favorite: favorite,
+        unFavorite: unFavorite,
         editColor: editColor,
         editName: editName,
         remove: remove
@@ -127,11 +130,40 @@ function palette( status, $rootScope, dataservice ) {
 
     }
 
-    function save( palette ) {
+    function initFavorites() {
 
-        service.palettes.push( palette );
+        service.favorites = localStorageService.get( 'favorites' ) === null ? [] : localStorageService.get( 'favorites' );
+
+        return service.favorites;
+
+    }
+
+    function isFavorite( palette ) {
+
+        return localStorageService.get( 'favorites' ).indexOf( palette ) > -1;
+
+    }
+
+    function favorite() {
+
+        var palette = JSON.stringify( service.current );
+
+        if( isFavorite( palette ) )
+            return false;
+
+        service.favorites.push( palette );
         $rootScope.$broadcast( 'palette-updated' );
-        // TODO: Save the palettes locally or in DB attached to user
+
+        return localStorageService.set( 'favorites', service.favorites );
+
+    }
+
+    function unFavorite( palette ) {
+
+        // get favorites
+        // split up favorites
+        // match palette to fractions
+        // remove match
 
     }
 

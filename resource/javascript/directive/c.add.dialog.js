@@ -2,9 +2,9 @@ angular
     .module( 'colorhelper' )
     .directive( 'cAddDialog', cAddDialog );
 
-cAddDialog.$inject = [ 'palette', '$rootScope' ];
+cAddDialog.$inject = [ 'palette' ];
 
-function cAddDialog( palette, $rootScope ) {
+function cAddDialog( palette ) {
 
     return {
 
@@ -18,8 +18,7 @@ function cAddDialog( palette, $rootScope ) {
         },
         link: function( scope ){
 
-            scope.id = "add-color-input";
-            scope.hex = '#EBEBEB';
+            scope.id = 'add-color-input';
 
             // Initialize colorpicker on our input.
             $( '#add-color-input' ).colorPicker();
@@ -29,7 +28,8 @@ function cAddDialog( palette, $rootScope ) {
 
                 title: l( '%dialog.add.color' ),
                 execute: l( '%dialog.add.color.confirm' ),
-                cancel: l( '%dialog.cancel' )
+                cancel: l( '%dialog.cancel' ),
+                inputValue: '#EBEBEB'
 
             };
 

@@ -2,9 +2,9 @@ angular
     .module( 'colorhelper' )
     .directive( 'cEditDialog', cEditDialog );
 
-cEditDialog.$inject = [ 'palette', '$rootScope'  ];
+cEditDialog.$inject = [ 'palette'  ];
 
-function cEditDialog( palette, $rootScope ) {
+function cEditDialog( palette ) {
 
     return {
 
@@ -28,14 +28,15 @@ function cEditDialog( palette, $rootScope ) {
 
                 title: l( '%dialog.edit.color' ),
                 execute: l( '%dialog.confirm' ),
-                cancel: l( '%dialog.cancel' )
+                cancel: l( '%dialog.cancel' ),
+                inputValue: ''
 
             };
 
             // Gives us some colors to work with (current palette's).
             scope.$on( 'palette-updated', function() {
 
-                scope.hex = '#' + palette.current.colors[ scope.idx ];
+                scope.strings.inputValue = '#' + palette.current.colors[ scope.idx ];
 
                 // Initialize colorpicker on our input.
                 $( '#' + scope.id ).colorPicker({color: scope.hex });
@@ -49,7 +50,7 @@ function cEditDialog( palette, $rootScope ) {
             scope.execute = function() {
 
                 var color = $( '#edit-color-' + scope.idx ).val().substring( 1 );
-                palette.edit( scope.idx, color );
+                palette.editColor( scope.idx, color );
                 scope.hide();
 
             };
@@ -57,7 +58,7 @@ function cEditDialog( palette, $rootScope ) {
             // Hides the dialog
             scope.hide = function() {
 
-                scope.hex = '';
+                scope.strings.inputValue = '';
                 scope.show = false;
 
             };

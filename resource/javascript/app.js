@@ -1,7 +1,7 @@
 /*
  * Our app
  */
-var colorhelper = angular.module( 'colorhelper', [] );
+var colorhelper = angular.module( 'colorhelper', [ 'LocalStorageModule' ] );
 
 /*
  * Disable http get cache for IE11 bug
@@ -13,8 +13,10 @@ angular
 function config( $httpProvider ) {
 
     //initialize get if not there
-    if (!$httpProvider.defaults.headers.get) {
+    if ( !$httpProvider.defaults.headers.get ) {
+
         $httpProvider.defaults.headers.get = {};
+
     }
 
     //disable IE ajax request caching
@@ -22,13 +24,13 @@ function config( $httpProvider ) {
 
 }
 
-
 /*
  * Shorthand for l10n.js localization function
  */
 var l = function (string) {
 
     return string.toLocaleString();
+
 };
 
 /*

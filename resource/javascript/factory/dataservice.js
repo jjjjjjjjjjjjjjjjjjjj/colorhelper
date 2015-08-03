@@ -2,9 +2,9 @@ angular
     .module( 'colorhelper' )
     .factory( 'dataservice', dataservice );
 
-dataservice.$inject = [ '$rootScope', '$http', 'status' ];
+dataservice.$inject = [  '$http', 'status' ];
 
-function dataservice( $rootScope, $http, status ) {
+function dataservice( $http, status ) {
 
     return {
 

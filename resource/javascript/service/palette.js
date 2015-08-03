@@ -133,6 +133,7 @@ function palette( status, $rootScope, dataservice, localStorageService ) {
     function initFavorites() {
 
         service.favorites = localStorageService.get( 'favorites' ) === null ? [] : localStorageService.get( 'favorites' );
+        localStorageService.set( 'favorites', service.favorites );
 
         return service.favorites;
 

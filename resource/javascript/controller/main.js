@@ -87,6 +87,7 @@ function MainController( status, colorscheme, palette, $scope, settings ) {
     $scope.$on( 'palette-updated', function() {
 
         $scope.palette = palette.current;
+
         colorscheme.update( palette.current.colors[0] );
 
     });

@@ -57,17 +57,16 @@
                         </svg>
 
                         <ul>
-                            <li data-ng-repeat="item in menu">
+                            <li data-ng-repeat="item in menu"
+                                class="{{ item.class }}">
+                                {{ item.label }}
 
-                                <a data-ng-href="{{ item.href }}">
-                                    {{ item.label }}
-                                </a>
 
                                 <!-- Sub menu -->
                                 <ul data-ng-if="item.subMenu">
 
                                     <li data-ng-repeat="child in item.subMenu track by $index"
-                                        data-ng-click="child.fn()"
+                                        data-ng-click="child.fn( $index )"
                                         class="{{ child.class }}">
 
                                         <a href="" data-ng-href="{{ child.href }}" data-ng-if="!child.isFav">

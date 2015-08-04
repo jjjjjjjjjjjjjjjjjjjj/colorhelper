@@ -19,27 +19,28 @@ function NavigationController(  $rootScope, $scope, palette, settings ) {
 
             label: l( '%menu.generate' ),
             href: '#',
+            class: 'default-cursor',
             subMenu: [
 
                 {
 
                     label: l( '%menu.generate.blank' ),
-                    href: '',
-                    fn: generateBlank
+                    fn: generateBlank,
+                    class: 'pointer'
 
                 },
                 {
 
                     label: l( '%menu.generate.random' ),
-                    href: '',
-                    fn: generateRandom
+                    fn: generateRandom,
+                    class: 'pointer'
 
                 },
                 {
 
                     label: l( '%menu.generate.popular' ),
-                    href: '',
-                    fn: generatePopular
+                    fn: generatePopular,
+                    class: 'pointer'
 
                 }
 
@@ -50,7 +51,7 @@ function NavigationController(  $rootScope, $scope, palette, settings ) {
 
             label: l( '%menu.favorites' ),
             href: '',
-            class: 'favorites-wrapper',
+            class: 'favorites-wrapper default-cursor',
             subMenu: {}
 
         },
@@ -58,25 +59,28 @@ function NavigationController(  $rootScope, $scope, palette, settings ) {
 
             label: l( '%menu.dev' ),
             href: '#',
+            class: 'default-cursor',
             subMenu: [
 
                 {
 
                     label: l( '%menu.dev.github' ),
-                    href: $scope.app.GitHubURL
+                    href: $scope.app.GitHubURL,
+                    class: 'pointer'
 
                 },
                 {
 
                     label: l( '%menu.dev.copyasarray' ),
                     href: '',
-                    fn: copyAsArray
+                    fn: copyAsArray,
+                    class: 'pointer'
 
                 }
 
             ]
 
-        },
+        }/*,
         {
 
             label: l( '%menu.settings' ),
@@ -93,7 +97,7 @@ function NavigationController(  $rootScope, $scope, palette, settings ) {
 
             ]
 
-        }
+        }*/
 
     ];
 
@@ -154,9 +158,18 @@ function NavigationController(  $rootScope, $scope, palette, settings ) {
 
     }
 
-    function copyAsArray() {
+    function copyAsArray( i ) {
 
-        // copy dialog
+        var s = '[',
+            p = palette.current.colors;
+
+        for( var i = 0 ; i < p.length ; i++ )
+            s += '"' + p[ i ] + '", ';
+
+        s = s.substring( 0, s.length - 2);
+        s += ']';
+
+        return $scope.copy( s );
 
     }
 
@@ -180,6 +193,20 @@ function NavigationController(  $rootScope, $scope, palette, settings ) {
     }
 
     $scope.$on( 'palette-updated', function() { updateFavoritesMenu() } );
+
+    $scope.copy = function( text ) {
+
+        if (navigator.userAgent.indexOf('Mac OS X') != -1) {
+
+            window.prompt( "CMD + C -> ENTER" , text );
+
+        } else {
+
+            window.prompt( "CTRL + C -> ENTER" , text );
+
+        }
+
+    };
 
     init();
 

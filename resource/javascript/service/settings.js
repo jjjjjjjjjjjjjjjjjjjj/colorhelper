@@ -8,11 +8,15 @@ function settings( $rootScope, localStorageService ) {
 
     var service = {
 
+        settings: {
+
+            palettePreference: 'popular'
+
+        },
+
         initSettings: initSettings,
         saveSettings: saveSettings,
         togglePalettePreference: togglePalettePreference,
-
-        palettePreference: 'popular'
 
     };
 
@@ -21,20 +25,20 @@ function settings( $rootScope, localStorageService ) {
 
     function initSettings() {
 
-        service = localStorageService.get( 'settings' ) === null ? service : localStorageService.get( 'settings' );
+        service.settings = localStorageService.get( 'settings' ) === null ? service.settings : localStorageService.get( 'settings' );
         return saveSettings();
 
     }
 
     function saveSettings() {
 
-        return localStorageService.set( 'settings', service );
+        return localStorageService.set( 'settings', service.settings );
 
     }
 
     function togglePalettePreference() {
 
-        service.palettePreference = 'random' ? 'popular' : 'random';
+        service.settings.palettePreference = ( service.settings.palettePreference === 'random' ) ? 'popular' : 'random';
         return saveSettings();
 
     }

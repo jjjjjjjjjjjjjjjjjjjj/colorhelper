@@ -16,6 +16,12 @@ String.toLocaleString({
         "%menu.generate.blank": "Blank",
         "%menu.generate.random": "Slumpad",
         "%menu.generate.popular": "Populär",
+        "%menu.generate": "Generera",
+        "%menu.favorites": "Favoriter",
+        "%menu.dev": "Dev",
+        "%menu.dev.copyasarray": "Kopiera palett som array",
+        "%menu.settings": "Inställningar",
+        "%menu.settings.popular": "Palettpreferens",
 
         "%meta.colourlovers": "Visa denna palette på www.colourlovers.com",
 
@@ -67,6 +73,14 @@ String.toLocaleString({
         "%menu.add": "Add color",
         "%menu.new": "New palette",
         "%menu.save": "Favorite",
+        "%menu.generate": "Generate",
+        "%menu.favorites": "Favorites",
+        "%menu.dev": "Dev",
+        "%menu.dev.copyasarray": "Copy palette as array",
+        "%menu.settings": "Settings",
+        "%menu.settings.popular": "Palette preference",
+
+
 
         "%remove.success": "Removed one color.",
 
@@ -107,6 +121,12 @@ String.toLocaleString({
         "%menu.add": "カラーをアッドする",
         "%menu.new": "新しい配色",
         "%menu.save": "お気に入り",
+        "%menu.generate": "ジェネレート",
+        "%menu.favorites": "Favorites",
+        "%menu.dev": "Dev",
+        "%menu.dev.copyasarray": "Copy palette as array",
+        "%menu.settings": "Settings",
+        "%menu.settings.popular": "Palette preference",
 
         "%remove.success": "カラーを一つ消しました。",
 

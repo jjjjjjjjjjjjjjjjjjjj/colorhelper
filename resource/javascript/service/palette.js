@@ -2,9 +2,9 @@ angular
     .module( 'colorhelper' )
     .service( 'palette', palette );
 
-palette.$inject = [ 'status', '$rootScope', 'dataservice', 'localStorageService' ];
+palette.$inject = [ 'status', '$rootScope', 'dataservice', 'localStorageService', 'settings' ];
 
-function palette( status, $rootScope, dataservice, localStorageService ) {
+function palette( status, $rootScope, dataservice, localStorageService, settings ) {
 
     var service = {
 
@@ -29,7 +29,7 @@ function palette( status, $rootScope, dataservice, localStorageService ) {
         initFavorites: initFavorites,
         isFavorite: isFavorite,
         favorites: [],
-        favorite: favorite,
+        toggleFavorite: toggleFavorite,
         unFavorite: unFavorite,
         editColor: editColor,
         editName: editName,
@@ -40,16 +40,37 @@ function palette( status, $rootScope, dataservice, localStorageService ) {
     return service;
     ///////////////
 
-    function getNew( paletteType ) {
+    function getNew( type ) {
 
-        dataservice.getPalette( paletteType ).then( function ( response ) {
+        type = typeof type !== 'undefined' ? type : settings.settings.palettePreference;
 
-            service.set( response );
+        // Generate blank palette.
+        if( type === 'blank' ) {
+
+            service.current = {
+
+                colors: [ "9B9B9B", "B5B5B5", "C7C7C7", "D7D7D7"],
+                title: 'New palette',
+                modified: 1
+
+            }
 
             // Tell rootscope that palette has been updated.
-            $rootScope.$broadcast('palette-updated');
+            $rootScope.$broadcast( 'palette-updated' );
 
-        });
+        // Generate random or popular palette (type === 'random'||'popular').
+        } else {
+
+            dataservice.getPalette( type ).then( function ( response ) {
+
+                service.set( response );
+
+                // Tell rootscope that palette has been updated.
+                $rootScope.$broadcast( 'palette-updated' );
+
+            });
+
+        }
 
     }
 
@@ -128,43 +149,45 @@ function palette( status, $rootScope, dataservice, localStorageService ) {
         // Generate new favicon.
         generateFavicon( service.current.colors );
 
+        // Broadcast.
+        $rootScope.$broadcast( 'palette-updated' );
+
     }
 
     function initFavorites() {
 
         service.favorites = localStorageService.get( 'favorites' ) === null ? [] : localStorageService.get( 'favorites' );
-        localStorageService.set( 'favorites', service.favorites );
-
-        return service.favorites;
+        return localStorageService.set( 'favorites', service.favorites );
 
     }
 
-    function isFavorite( palette ) {
+    function isFavorite() {
 
-        return localStorageService.get( 'favorites' ).indexOf( palette ) > -1;
+        return service.favorites.indexOf( JSON.stringify( service.current ) ) > -1;
 
     }
 
-    function favorite() {
+    function toggleFavorite() {
 
-        var palette = JSON.stringify( service.current );
+        var currentPalette = JSON.stringify( service.current );
 
-        if( isFavorite( palette ) )
-            return false;
+        if( isFavorite() )
+            return unFavorite( currentPalette );
 
-        service.favorites.push( palette );
+        service.favorites.push( currentPalette );
+
         $rootScope.$broadcast( 'palette-updated' );
-
         return localStorageService.set( 'favorites', service.favorites );
 
     }
 
     function unFavorite( palette ) {
 
-        // get favorites
-        // split up favorites
-        // match palette to fractions
-        // remove match
+        if( service.favorites.indexOf( palette ) > -1 )
+            service.favorites.splice( service.favorites.indexOf( palette ), 1 );
+
+        $rootScope.$broadcast( 'palette-updated' );
+        return localStorageService.set( 'favorites', service.favorites );
 
     }
 

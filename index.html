@@ -64,16 +64,29 @@
                                 </a>
 
                                 <!-- Sub menu -->
-                                <ul data-ng-show="item.subMenu">
+                                <ul data-ng-if="item.subMenu">
 
                                     <li data-ng-repeat="child in item.subMenu track by $index"
-                                        data-ng-click="child.fn()">
-                                        <a href="" data-ng-href="{{ child.href }}">
+                                        data-ng-click="child.fn()"
+                                        class="{{ child.class }}">
+
+                                        <a href="" data-ng-href="{{ child.href }}" data-ng-if="!child.isFav">
                                             {{ child.label }}
                                         </a>
-                                        <a href="" class="rm-fav" data-ng-click="child.rmfn($index)" data-ng-show="{{ child.rm }}">
-                                            {{ child.label }}
-                                        </a>
+
+                                        <ul data-ng-if="child.isFav" class="{{ child.class }}">
+
+                                            <li class="favorite-color rm-fav"
+                                                data-ng-click="child.rmfn( $index )"
+                                                style="background: url('resource/graphic/bin.png') center center no-repeat"
+                                                ></li><span class="favorites-thumb-overlay" data-ng-click="child.setfn( $index )"><li data-ng-repeat="color in child.colors track by $index"
+                                                data-ng-style="{ 'background-color': '#' + color }"
+                                                class="favorite-color"></li></span>
+
+                                        </ul>
+
+
+
                                     </li>
 
                                 </ul>

@@ -7,9 +7,9 @@ PaletteController.$inject = [ 'colorscheme', 'palette', '$scope' ];
 function PaletteController(  colorscheme, palette, $scope ) {
 
     // Menu structure and content
-    $scope.menu = {
+    $scope.menu = [
 
-        0: {
+        {
 
             label: l( '%menu.new' ),
             href: '#',
@@ -17,8 +17,7 @@ function PaletteController(  colorscheme, palette, $scope ) {
             fn: generateNewPalette
 
         },
-
-        1: {
+        {
 
             label: l( '%menu.add' ),
             href: '#',
@@ -26,8 +25,7 @@ function PaletteController(  colorscheme, palette, $scope ) {
             fn: toggleAddDialog
 
         },
-
-        2: {
+        {
 
             label: l( '%menu.save' ),
             href: '#',
@@ -36,13 +34,11 @@ function PaletteController(  colorscheme, palette, $scope ) {
 
         }
 
-    };
-    // Grabs data from localstorage and populates favorites array.
-    palette.initFavorites();
+    ];
 
     function generateNewPalette() {
 
-        return palette.getNew( 'popular' );
+        return palette.getNew();
 
     }
 
@@ -70,9 +66,5 @@ function PaletteController(  colorscheme, palette, $scope ) {
     });
 
     // Update the scope to match current palette.
-    $scope.$on( 'palette-updated', function() {
-
-        $scope.menu[2].paths = palette.isFavorite() ? ['M32 12.408l-11.056-1.607-4.944-10.018-4.944 10.018-11.056 1.607 8 7.798-1.889 11.011 9.889-5.199 9.889 5.199-1.889-11.011 8-7.798z'] : [ 'M32 12.408l-11.056-1.607-4.944-10.018-4.944 10.018-11.056 1.607 8 7.798-1.889 11.011 9.889-5.199 9.889 5.199-1.889-11.011 8-7.798zM16 23.547l-6.983 3.671 1.334-7.776-5.65-5.507 7.808-1.134 3.492-7.075 3.492 7.075 7.807 1.134-5.65 5.507 1.334 7.776-6.983-3.671z' ];
-
-    });
+    $scope.$on( 'palette-updated', function() { $scope.menu[2].paths = palette.isFavorite() ? ['M32 12.408l-11.056-1.607-4.944-10.018-4.944 10.018-11.056 1.607 8 7.798-1.889 11.011 9.889-5.199 9.889 5.199-1.889-11.011 8-7.798z'] : [ 'M32 12.408l-11.056-1.607-4.944-10.018-4.944 10.018-11.056 1.607 8 7.798-1.889 11.011 9.889-5.199 9.889 5.199-1.889-11.011 8-7.798zM16 23.547l-6.983 3.671 1.334-7.776-5.65-5.507 7.808-1.134 3.492-7.075 3.492 7.075 7.807 1.134-5.65 5.507 1.334 7.776-6.983-3.671z' ]; });
 }

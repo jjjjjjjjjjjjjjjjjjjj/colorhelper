@@ -2,13 +2,15 @@ angular
     .module( 'colorhelper' )
     .controller( 'MainController', MainController );
 
-MainController.$inject = [ 'status', 'colorscheme', 'palette', '$scope' ];
+MainController.$inject = [ 'status', 'colorscheme', 'palette', '$scope', 'settings' ];
 
-function MainController( status, colorscheme, palette, $scope ) {
+function MainController( status, colorscheme, palette, $scope, settings ) {
 
     function init() {
 
-        palette.getNew( 'random' );
+        palette.getNew();
+        palette.initFavorites();
+        settings.initSettings();
 
     }
 
@@ -26,7 +28,7 @@ function MainController( status, colorscheme, palette, $scope ) {
 
     }
 
-    // Value used to show and hide dialog.
+    // Values used to show and hide dialog.
     $scope.showColorEditDialog = {
         0: 0,
         1: 0,
@@ -36,13 +38,11 @@ function MainController( status, colorscheme, palette, $scope ) {
         5: 0,
         6: 0
     };
-
     $scope.showNameEditDialog = false;
 
     // Shows and hide edit dialog.
     $scope.toggleNameEditDialog = function( ) {
 
-        console.log( $scope.showNameEditDialog);
         return $scope.showNameEditDialog = !$scope.showNameEditDialog;
 
     };
@@ -63,9 +63,9 @@ function MainController( status, colorscheme, palette, $scope ) {
 
     };
 
-    $scope.getPalette = function( paletteType ) {
+    $scope.getPalette = function() {
 
-        palette.getNew( paletteType );
+        palette.getNew();
 
     };
 

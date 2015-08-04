@@ -172,17 +172,61 @@ li {
                     right: 100%;
                 }
 
-                #menu ul li ul li:hover ul li {
+                #menu ul li ul li ul.favorites-wrapper {
 
-                    display: block;
-
-                }
-
-                #menu ul li ul li ul li {
-
-                    display: none;
+                    height: 48px;
+                    border-bottom: 1px solid white;
 
                 }
+
+                    #menu ul li ul li:hover ul li {
+
+                        display: block;
+
+                    }
+
+                    #menu ul li ul li ul li {
+
+                        display: none;
+
+                    }
+
+                    #menu ul li ul li ul li.favorites-wrapper {
+
+                        padding: 0;
+
+                    }
+
+                        #menu ul li ul li ul li ul {
+
+                            background: white;
+                            cursor: pointer;
+
+                        }
+
+                        #menu ul li ul li ul li ul li.favorite-color {
+
+                            display: inline-block;
+                            height: 48px;
+                            width: 48px;
+                            padding: 0;
+                            margin: 0;
+                            text-align: center;
+                            opacity: 0.7;
+
+                        }
+
+                        #menu ul li ul li ul li ul:hover li.favorite-color:not(.rm-fav) {
+
+                            opacity: 1;
+
+                        }
+
+                        #menu ul li ul li ul li ul li.rm-fav:hover {
+
+                            opacity: 1;
+
+                        }
 
 
 

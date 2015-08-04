@@ -38,74 +38,78 @@ var l = function (string) {
  */
 var generateFavicon = function( colors ) {
 
-    // Create a canvas and determine how many colors we have to deal with
-    var canvas = document.createElement( 'canvas' ),
-        ctx = canvas.getContext('2d'),
-        count = colors.length;
+    if( typeof colors !== 'undefined' ) {
 
-    // Size of the canvas/favicon
-    canvas.height = canvas.width = 16;
+        // Create a canvas and determine how many colors we have to deal with
+        var canvas = document.createElement( 'canvas' ),
+            ctx = canvas.getContext('2d'),
+            count = colors.length;
 
-    // Four different layouts based on how many colors are in the palette
-    // Could possibly be done algorithmically but I'm not smart enough
-    switch ( count ) {
+        // Size of the canvas/favicon
+        canvas.height = canvas.width = 16;
 
-        case 2:
-            ctx.fillStyle = "#" + colors[0];
-            ctx.fillRect(0, 0, 16, 8);
-            ctx.fillStyle = "#" + colors[1];
-            ctx.fillRect(0, 8, 16, 16);
-            break;
+        // Four different layouts based on how many colors are in the palette
+        // Could possibly be done algorithmically but I'm not smart enough
+        switch ( count ) {
 
-        case 3:
-            ctx.fillStyle = "#" + colors[0];
-            ctx.fillRect(0, 0, 16, 8);
-            ctx.fillStyle = "#" + colors[1];
-            ctx.fillRect(0, 8, 8, 16);
-            ctx.fillStyle = "#" + colors[2];
-            ctx.fillRect(8, 8, 16, 16);
-            break;
+            case 2:
+                ctx.fillStyle = "#" + colors[0];
+                ctx.fillRect(0, 0, 16, 8);
+                ctx.fillStyle = "#" + colors[1];
+                ctx.fillRect(0, 8, 16, 16);
+                break;
 
-        case 4:
-            ctx.fillStyle = "#" + colors[0];
-            ctx.fillRect(0, 0, 8, 8);
-            ctx.fillStyle = "#" + colors[1];
-            ctx.fillRect(8, 0, 16, 16);
-            ctx.fillStyle = "#" + colors[2];
-            ctx.fillRect(0, 8, 8, 16);
-            ctx.fillStyle = "#" + colors[3];
-            ctx.fillRect(8, 8, 16, 16);
-            break;
+            case 3:
+                ctx.fillStyle = "#" + colors[0];
+                ctx.fillRect(0, 0, 16, 8);
+                ctx.fillStyle = "#" + colors[1];
+                ctx.fillRect(0, 8, 8, 16);
+                ctx.fillStyle = "#" + colors[2];
+                ctx.fillRect(8, 8, 16, 16);
+                break;
 
-        case 5:
-            ctx.fillStyle = "#" + colors[0];
-            ctx.fillRect(0, 0, 8, 8);
-            ctx.fillStyle = "#" + colors[1];
-            ctx.fillRect(8, 0, 16, 16);
-            ctx.fillStyle = "#" + colors[2];
-            ctx.fillRect(0, 8, 5.34, 16);
-            ctx.fillStyle = "#" + colors[3];
-            ctx.fillRect(5.33, 8, 10.66, 16);
-            ctx.fillStyle = "#" + colors[4];
-            ctx.fillRect(10.65, 8, 16, 16);
-            break;
+            case 4:
+                ctx.fillStyle = "#" + colors[0];
+                ctx.fillRect(0, 0, 8, 8);
+                ctx.fillStyle = "#" + colors[1];
+                ctx.fillRect(8, 0, 16, 16);
+                ctx.fillStyle = "#" + colors[2];
+                ctx.fillRect(0, 8, 8, 16);
+                ctx.fillStyle = "#" + colors[3];
+                ctx.fillRect(8, 8, 16, 16);
+                break;
 
-        default:
-            ctx.fillStyle = "#" + colors[0];
-            ctx.fillRect(0, 0, 8, 8);
-            ctx.fillStyle = "#" + colors[1];
-            ctx.fillRect(8, 0, 16, 16);
-            ctx.fillStyle = "#" + colors[2];
-            ctx.fillRect(0, 8, 5.34, 16);
-            ctx.fillStyle = "#" + colors[3];
-            ctx.fillRect(5.33, 8, 10.66, 16);
-            ctx.fillStyle = "#" + colors[4];
-            ctx.fillRect(10.65, 8, 16, 16);
-            break;
+            case 5:
+                ctx.fillStyle = "#" + colors[0];
+                ctx.fillRect(0, 0, 8, 8);
+                ctx.fillStyle = "#" + colors[1];
+                ctx.fillRect(8, 0, 16, 16);
+                ctx.fillStyle = "#" + colors[2];
+                ctx.fillRect(0, 8, 5.34, 16);
+                ctx.fillStyle = "#" + colors[3];
+                ctx.fillRect(5.33, 8, 10.66, 16);
+                ctx.fillStyle = "#" + colors[4];
+                ctx.fillRect(10.65, 8, 16, 16);
+                break;
+
+            default:
+                ctx.fillStyle = "#" + colors[0];
+                ctx.fillRect(0, 0, 8, 8);
+                ctx.fillStyle = "#" + colors[1];
+                ctx.fillRect(8, 0, 16, 16);
+                ctx.fillStyle = "#" + colors[2];
+                ctx.fillRect(0, 8, 5.34, 16);
+                ctx.fillStyle = "#" + colors[3];
+                ctx.fillRect(5.33, 8, 10.66, 16);
+                ctx.fillStyle = "#" + colors[4];
+                ctx.fillRect(10.65, 8, 16, 16);
+                break;
+
+        }
+
+        // Alter favicon links href attribute
+        document.getElementById( 'favicon' ).setAttribute( 'href', canvas.toDataURL( 'image/png' ) );
 
     }
-
-    // Alter favicon links href attribute
-    document.getElementById( 'favicon' ).setAttribute( 'href', canvas.toDataURL( 'image/png' ) );
 
 };

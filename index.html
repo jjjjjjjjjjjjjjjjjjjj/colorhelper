@@ -27,27 +27,6 @@
 
                 </a></h1>
 
-                <!-- Menu
-                <ul data-ng-controller="NavigationController">
-
-                    <li data-ng-repeat="item in menu">
-                        <a data-ng-href="{{ item.href }}">
-                            {{ item.label }}
-                        </a>
-
-                        <!-- Sub menu -->
-                <!--
-                        <ul data-ng-show="item.subMenu">
-                            <li data-ng-repeat="child in item.subMenu">
-                                <a data-ng-href="{{ child.href }}">
-                                    {{ child.label }}
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-
-                </ul> -->
-
             </div>
 
         </div>
@@ -62,6 +41,49 @@
 
             </div>
 
+        </div>
+
+        <!-- Menu -->
+        <div id="menu" data-ng-controller="NavigationController">
+
+            <div class="inner">
+                <ul>
+                    <li>
+
+                        <!-- SVG COFFEE CUP MENU ICON -->
+                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 26 26">
+                            <path d="M24.375 8.125h-4.875v-2.438c0-2.244-4.365-4.063-9.75-4.063s-9.75 1.819-9.75 4.063v16.25c0 2.244 4.365 4.063 9.75 4.063s9.75-1.819 9.75-4.063v-2.438h4.875c0.897 0 1.625-0.728 1.625-1.625v-8.125c0-0.897-0.728-1.625-1.625-1.625zM4.47 6.561c-0.939-0.31-1.508-0.641-1.813-0.873 0.305-0.232 0.874-0.564 1.813-0.873 1.471-0.485 3.346-0.752 5.28-0.752s3.809 0.267 5.28 0.752c0.939 0.309 1.508 0.641 1.813 0.873-0.305 0.232-0.874 0.564-1.813 0.873-1.471 0.485-3.346 0.752-5.28 0.752s-3.809-0.267-5.28-0.752zM22.75 16.25h-3.25v-4.875h3.25v4.875z"
+                                  data-ng-attr-fill="{{ colorscheme.details }}"></path>
+                        </svg>
+
+                        <ul>
+                            <li data-ng-repeat="item in menu">
+
+                                <a data-ng-href="{{ item.href }}">
+                                    {{ item.label }}
+                                </a>
+
+                                <!-- Sub menu -->
+                                <ul data-ng-show="item.subMenu">
+
+                                    <li data-ng-repeat="child in item.subMenu track by $index"
+                                        data-ng-click="child.fn()">
+                                        <a href="" data-ng-href="{{ child.href }}">
+                                            {{ child.label }}
+                                        </a>
+                                        <a href="" class="rm-fav" data-ng-click="child.rmfn($index)" data-ng-show="{{ child.rm }}">
+                                            {{ child.label }}
+                                        </a>
+                                    </li>
+
+                                </ul>
+
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+
+            </div>
         </div>
 
         <!-- Content wrap -->
@@ -210,6 +232,7 @@
         <script src="resource/javascript/service/palette.js"></script>
         <script src="resource/javascript/service/status.js"></script>
         <script src="resource/javascript/service/colorscheme.js"></script>
+        <script src="resource/javascript/service/settings.js"></script>
 
         <script src="resource/javascript/factory/dataservice.js"></script>
 

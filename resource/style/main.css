@@ -98,6 +98,95 @@ li {
 
 }
 
+#menu {
+
+    position:               fixed;
+    z-index:                6;
+    width:                  100%;
+    top: 0;
+    right: 0;
+
+}
+
+#menu .inner {
+
+    width:                  85%;
+    max-width:              1080px;
+    margin:                 0 auto;
+
+}
+
+#menu ul {
+
+    position: relative;
+    display: inline-table;
+    background: #ffffff;
+    white-space: nowrap;
+    float: right;
+
+}
+
+#menu ul li:hover ul {
+
+    display: block;
+
+}
+
+    #menu ul:after {
+
+        content: ""; clear: both; display: block;
+
+    }
+
+
+    #menu ul li {
+
+        float: right;
+        display: block;
+        height: 48px;
+        line-height: 48px;
+        padding: 0 20px;
+    }
+
+        #menu ul li svg {
+            width: 48px;
+            margin-top: 10px;
+        }
+
+        #menu ul li ul {
+            display: none;
+            position: absolute;
+            top: 100%;
+            right: 0;
+        }
+
+            #menu ul li ul li {
+                float: none;
+                position: relative;
+            }
+
+
+                #menu ul li ul li ul {
+                    position: absolute;
+                    top: 0;
+                    right: 100%;
+                }
+
+                #menu ul li ul li:hover ul li {
+
+                    display: block;
+
+                }
+
+                #menu ul li ul li ul li {
+
+                    display: none;
+
+                }
+
+
+
+
 #status-bar {
 
     position:               fixed;

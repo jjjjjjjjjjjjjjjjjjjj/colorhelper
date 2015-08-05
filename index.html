@@ -45,54 +45,59 @@
 
         <!-- Menu -->
         <div id="menu" data-ng-controller="NavigationController">
-
             <div class="inner">
+
+                <!-- Level 0 -->
                 <ul>
-                    <li>
+                <li>
 
-                        <!-- SVG COFFEE CUP MENU ICON -->
-                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 26 26">
-                            <path d="M24.375 8.125h-4.875v-2.438c0-2.244-4.365-4.063-9.75-4.063s-9.75 1.819-9.75 4.063v16.25c0 2.244 4.365 4.063 9.75 4.063s9.75-1.819 9.75-4.063v-2.438h4.875c0.897 0 1.625-0.728 1.625-1.625v-8.125c0-0.897-0.728-1.625-1.625-1.625zM4.47 6.561c-0.939-0.31-1.508-0.641-1.813-0.873 0.305-0.232 0.874-0.564 1.813-0.873 1.471-0.485 3.346-0.752 5.28-0.752s3.809 0.267 5.28 0.752c0.939 0.309 1.508 0.641 1.813 0.873-0.305 0.232-0.874 0.564-1.813 0.873-1.471 0.485-3.346 0.752-5.28 0.752s-3.809-0.267-5.28-0.752zM22.75 16.25h-3.25v-4.875h3.25v4.875z"
-                                  data-ng-attr-fill="{{ colorscheme.details }}"></path>
-                        </svg>
+                    <!-- Label (SVG COFFEE CUP MENU ICON) -->
+                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 26 26">
+                        <path d="M24.375 8.125h-4.875v-2.438c0-2.244-4.365-4.063-9.75-4.063s-9.75 1.819-9.75 4.063v16.25c0 2.244 4.365 4.063 9.75 4.063s9.75-1.819 9.75-4.063v-2.438h4.875c0.897 0 1.625-0.728 1.625-1.625v-8.125c0-0.897-0.728-1.625-1.625-1.625zM4.47 6.561c-0.939-0.31-1.508-0.641-1.813-0.873 0.305-0.232 0.874-0.564 1.813-0.873 1.471-0.485 3.346-0.752 5.28-0.752s3.809 0.267 5.28 0.752c0.939 0.309 1.508 0.641 1.813 0.873-0.305 0.232-0.874 0.564-1.813 0.873-1.471 0.485-3.346 0.752-5.28 0.752s-3.809-0.267-5.28-0.752zM22.75 16.25h-3.25v-4.875h3.25v4.875z"
+                              data-ng-attr-fill="{{ colorscheme.details }}"></path>
+                    </svg>
 
-                        <ul>
-                            <li data-ng-repeat="item in menu"
-                                class="{{ item.class }}">
-                                {{ item.label }}
+                    <!-- Level 1 -->
+                    <ul>
 
+                        <!-- Label -->
+                        <li data-ng-repeat="item in menu"
+                            class="{{ item.class }}">
+                            {{ item.label }}
 
-                                <!-- Sub menu -->
-                                <ul data-ng-if="item.subMenu">
+                            <!-- Level 2 -->
+                            <ul data-ng-if="item.subMenu">
 
-                                    <li data-ng-repeat="child in item.subMenu track by $index"
-                                        data-ng-click="child.fn( $index )"
-                                        class="{{ child.class }}">
+                                <li data-ng-repeat="child in item.subMenu track by $index"
+                                    data-ng-click="child.fn( $index )"
+                                    class="{{ child.class }}">
 
-                                        <a href="" data-ng-href="{{ child.href }}" data-ng-if="!child.isFav">
-                                            {{ child.label }}
-                                        </a>
+                                    <!-- Label & link -->
+                                    <a href="" data-ng-href="{{ child.href }}" data-ng-if="!child.isFav">
+                                        {{ child.label }}
+                                    </a>
 
-                                        <ul data-ng-if="child.isFav" class="{{ child.class }}">
+                                    <!-- Level 3 (horizontal palette favorite color blocks) -->
+                                    <ul data-ng-if="child.isFav" class="{{ child.class }}">
 
-                                            <li class="favorite-color rm-fav"
-                                                data-ng-click="child.rmfn( $index )"
-                                                style="background: url('resource/graphic/bin.png') center center no-repeat"
-                                                ></li><span class="favorites-thumb-overlay" data-ng-click="child.setfn( $index )"><li data-ng-repeat="color in child.colors track by $index"
-                                                data-ng-style="{ 'background-color': '#' + color }"
-                                                class="favorite-color"></li></span>
+                                        <li class="favorite-color rm-fav"
+                                            data-ng-click="child.rmfn( $index )"
+                                            style="background: url('resource/graphic/bin.png') center center no-repeat"
+                                            ></li><span class="favorites-thumb-overlay" data-ng-click="child.setfn( $index )"><li data-ng-repeat="color in child.colors track by $index"
+                                            data-ng-style="{ 'background-color': '#' + color }"
+                                            class="favorite-color"></li></span>
 
-                                        </ul>
+                                    </ul>
 
+                                </li>
 
+                            </ul>
 
-                                    </li>
+                        </li>
 
-                                </ul>
+                    </ul>
 
-                            </li>
-                        </ul>
-                    </li>
+                </li>
                 </ul>
 
             </div>

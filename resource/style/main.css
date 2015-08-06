@@ -68,12 +68,41 @@ li {
 
 }
 
+    @media only screen
+        and ( min-width: 768px )
+        and ( max-width: 1024px )  {
+
+        .inner {
+
+            width: 95%;
+
+        }
+
+    }
+
+    @media only screen
+        and ( max-width: 767px ){
+
+        .inner {
+
+            width: 100%;
+
+        }
+
+        #nav {
+
+            padding: 0px 20px;
+
+        }
+
+    }
+
 
 
 #nav .inner h1 {
 
     float:                  left;
-    line-height:            50px;
+    line-height:            48px;
     height:                 50px;
     font-size:              22px;
     font-weight:            600;
@@ -301,6 +330,40 @@ li {
 
 }
 
+    @media only screen
+        and ( min-width: 768px )
+        and ( max-width: 1024px )
+        and ( orientation: landscape ) {
+
+            #main-wrapper {
+
+                margin-top: 15px;
+
+            }
+        }
+
+    @media only screen
+        and ( min-width: 768px )
+        and ( max-width: 1024px )
+        and ( orientation: portrait ) {
+
+            #main-wrapper {
+
+                margin-top: 10px;
+
+            }
+        }
+
+    @media only screen
+    and ( max-width: 767px ) {
+
+        #main-wrapper {
+
+            margin-top: 10px;
+
+        }
+    }
+
 #palette-wrapper {
 
     background:             #ffffff;
@@ -334,12 +397,22 @@ li {
 
 }
 
-    #header-svg path {
+    @media only screen
+        and ( max-width: 767px ) {
 
-        -webkit-transition:     linear 0.1s;
-        transition:             linear 0.1s;
+            #header-svg {
 
-    }
+                height: 260px;
+
+            }
+        }
+
+#header-svg path {
+
+    -webkit-transition:     linear 0.1s;
+    transition:             linear 0.1s;
+
+}
 
 .color {
 
@@ -381,15 +454,37 @@ li {
 
     position:               relative;
     margin:                 -10px 0 0 0;
+    top:                    -30px;
     padding:                0 0 0 30px;
 
 }
 
+    @media only screen
+        and ( min-width: 768px )
+        and ( max-width: 1024px ) {
+
+            #palette-content {
+
+                margin:             0;
+
+            }
+        }
+
+    @media only screen
+        and ( max-width: 767px ) {
+
+            #palette-content {
+
+                top:                0;
+                padding:            10px 10px 20px 10px;
+                font-size:          85%;
+
+            }
+        }
+
     #palette-content #palette-heading {
 
         position:               relative;
-        top:                    -30px;
-        left:                   0;
         z-index:                4;
         padding:                0;
         display:                inline-block;
@@ -411,7 +506,6 @@ li {
     #palette-content #palette-meta {
 
         position:               relative;
-        top:                    -30px;
         z-index:                4;
 
     }
@@ -462,6 +556,16 @@ li {
     top:                    62px;
     z-index:                5;
 
+}
+
+@media only screen
+    and ( max-width: 767px ) {
+
+    .color-tools-wrapper {
+
+        display:                none;
+
+    }
 }
 
     .color-tools-wrapper .color-tool-item {

@@ -91,7 +91,13 @@ li {
 
         #nav {
 
-            padding: 0px 20px;
+            padding: 0 20px;
+
+        }
+
+        .hide-mobile {
+
+            display: none;
 
         }
 
@@ -268,6 +274,23 @@ li {
 
                         }
 
+
+                        @media only screen
+                            and ( max-width: 767px ) {
+
+                                #menu ul li ul li ul li ul li.favorite-color:not(.rm-fav) {
+
+                                    width:                  24px;
+
+                                }
+                            }
+
+                            .favorites-thumb-overlay {
+
+                                display:                inline;
+
+                            }
+
 #status-bar {
 
     position:               fixed;
@@ -439,7 +462,6 @@ li {
     cursor:                 pointer;
     -webkit-user-select:    none; /* webkit (safari, chrome) browsers */
     -moz-user-select:       none; /* mozilla browsers */
-    -khtml-user-select:     none; /* webkit (konqueror) browsers */
     -ms-user-select:        none; /* IE10+ */
 
 }
@@ -590,6 +612,7 @@ li {
 
         }
 
+
     .color-tools-wrapper .color-tools {
 
         display:                none;
@@ -668,6 +691,15 @@ li {
 
         }
 
+        @media only screen
+            and ( max-width: 767px ) {
+
+                .palette-tools-wrapper #palette-tools li {
+
+                    width:              50%;
+
+                }
+            }
 .popup-wrapper {
 
     position:               fixed;

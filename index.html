@@ -8,9 +8,11 @@
         <link rel="stylesheet" href="/resource/style/main.css"/>
         <link id="favicon" rel="icon" type="image/png" href="" />
 
+        <meta charset="utf-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="application-name" content="colorhelper">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
 
     </head>
 
@@ -83,9 +85,9 @@
                                         <li class="favorite-color rm-fav"
                                             data-ng-click="child.rmfn( $index )"
                                             style="background: url('resource/graphic/bin.png') center center no-repeat"
-                                            ></li><span class="favorites-thumb-overlay" data-ng-click="child.setfn( $index )"><li data-ng-repeat="color in child.colors track by $index"
+                                            ></li><div class="favorites-thumb-overlay" data-ng-click="child.setfn( $index )"><li data-ng-repeat="color in child.colors track by $index"
                                             data-ng-style="{ 'background-color': '#' + color }"
-                                            class="favorite-color"></li></span>
+                                            class="favorite-color"></li></div>
 
                                     </ul>
 
@@ -141,7 +143,8 @@
                                   data-ng-attr-fill="{{ '#' + color }}"
                                   data-ng-attr-d="{{ getColorPath( $index, palette.colors.length ) }}"
                                   data-ng-index="$index"
-                                  class="color-background">
+                                  class="color-background"
+                                  d="">
                             </path>
 
                         </g>
@@ -157,7 +160,7 @@
 
                             <li class="meta-item" data-ng-repeat="(key, value) in palette.meta track by $index" data-ng-attr-title="{{ key }}" data-ng-hide="value == 0">
 
-                                <img class="meta-icon" data-ng-src="resource/graphic/{{ key }}.png" alt="" /> {{ value }}
+                                <img class="meta-icon" data-ng-src="resource/graphic/{{ key }}.png" src="" alt="" /> {{ value }}
 
                             </li>
 
@@ -189,7 +192,8 @@
                         data-ng-init="fill = '#707070'"
                         data-ng-mouseover="fill = colorscheme"
                         data-ng-mouseleave="fill = '#707070'"
-                        data-ng-click="item.fn()">
+                        data-ng-click="item.fn()"
+                        data-ng-class="item.class">
 
                         <a data-ng-href="{{ item.href }}"
                            class="anchor">

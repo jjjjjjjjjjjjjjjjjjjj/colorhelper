@@ -6,16 +6,13 @@ SVGController.$inject = [ '$scope' ];
 
 function SVGController( $scope ) {
 
-    // Defined here to avoid excessive calls to DOM.
-    var svgHeader = document.getElementById( '#svgHeader' );
-
     // Returns svg path for current color column
     $scope.getColorPath = function( i, numCols ) {
 
         // Calculate color path
         var w = 100 / numCols,
             h = 100,
-            tilt = 20,
+            tilt = ( $(window).width() <= 676 ) ? 10 : 20,
             lTilt = (tilt / numCols) * (numCols - i),
             rTilt = (tilt / numCols) * (numCols - i - 1),
             x1 = w * i,
@@ -38,28 +35,4 @@ function SVGController( $scope ) {
 
     };
 
-    // Returns a number relative to the current width of the svg header.
-    $scope.getIconWidth = function( n ) {
-
-       var  w = svgHeader.width();
-            h = svgHeader.height(),
-            ratio = w / h,
-            iconWidth = n / ratio,
-            $scope.iconWidth = iconWidth;
-
-       return iconWidth;
-
-    };
-
-    $scope.centerIcon = function( i, colorCount ) {
-
-        var cw = ( 100 / colorCount ) - ( 50 / colorCount ); // Width of icon column.
-            xStart = i * ( 100 / colorCount ) + ( 50 / colorCount );
-
-        return xStart + ( cw / 2 ) - ( $scope.iconWidth / 2 );
-
-
-    }
-
 }
-

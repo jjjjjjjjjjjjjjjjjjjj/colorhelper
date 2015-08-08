@@ -3,7 +3,7 @@ A simple web application to aid you in your color-seeking quest.
 
 ### Main functionality
 * Generate random color palettes, using colourlovers.com API,
-* CRUD palettes (in the works),
+* CRUD palettes,
 * colorpicker.
 
 ### Supported languages
@@ -14,10 +14,11 @@ A simple web application to aid you in your color-seeking quest.
 ### TODO
 * ☑ ~~Colorpicker dialog for edit & add color~~,
 * ☑ ~~save using localstorage & shareable palettes,~~
-* ☐ responsiveness,
+* ☑ ~~responsiveness~~,
 * ☑ ~~add menu and mini-settings,~~
+* ☑ ~~changeable name,~~
+* ☐ store palettes in database, allow for shareable palettes,
 * ☐ separate localizations into own files,
-* ☑ ~~changeable name~~
 * ☐ re-organize controllers, directives, services, factories, based on belonging rather than type.
 
 ### Credits

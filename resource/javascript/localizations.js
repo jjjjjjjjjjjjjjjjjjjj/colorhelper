@@ -139,6 +139,5 @@ String.toLocaleString({
 
         "%edit.title": "Klicka för att ändra titel"
 
-
     }
 });

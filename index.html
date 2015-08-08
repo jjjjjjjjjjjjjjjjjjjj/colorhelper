@@ -23,7 +23,7 @@
 
             <div class="inner">
 
-                <h1 id="page-heading"><a data-ng-click="getPalette( 'random' )" href="" data-ng-style="{ 'color': colorscheme.details }">
+                <h1 id="page-heading" data-ng-cloak><a data-ng-click="getPalette( 'random' )" href="" data-ng-style="{ 'color': colorscheme.details }">
 
                     {{ app.name }}
 
@@ -34,12 +34,12 @@
         </div>
 
         <!-- Status bar -->
-        <div id="status-bar" class="ng-hide-animate" data-ng-show="status.show" data-ng-style="{ 'background': status.background }">
+        <div id="status-bar" data-ng-click="status.show = 0" class="ng-hide-animate" data-ng-show="status.show" data-ng-style="{ 'background': status.background }">
 
             <div class="inner">
 
-                <span class="status-title">{{ status.title }}</span> {{ status.message }}
-                <a class="close nolink" href="close"><img id="close-icon" src="resource/graphic/close-status.png" alt=""/></a>
+                <span class="status-title"  data-ng-cloak>{{ status.title }}</span><span class="hide-mobile" data-ng-cloak> {{ status.message }}</span>
+                <img class="close" id="close-icon" src="resource/graphic/close-status.png" alt="">
 
             </div>
 
@@ -117,7 +117,8 @@
                     <li data-ng-repeat="color in palette.colors track by $index"
                         data-ng-style="{ 'width' : (100 / palette.colors.length) + '%',
                                          'color' : '#fff' }"
-                        class="color-tool-item">
+                        class="color-tool-item"
+                        data-ng-cloak>
                         <span>#{{ color }}</span>
 
                         <div class="color-tools">
@@ -154,13 +155,13 @@
                     <!-- Palette meta -->
                     <div id="palette-content">
 
-                        <h1 id="palette-heading" data-ng-click="toggleNameEditDialog()" data-ng-title="{{ ll( '%edit.name' ) }}">{{ palette.title }}</h1>
+                        <h1 id="palette-heading" data-ng-click="toggleNameEditDialog()" data-ng-title="{{ ll( '%edit.name' ) }}"  data-ng-cloak>{{ palette.title }}</h1>
 
                         <ul id="palette-meta" data-ng-hide="palette.modified">
 
                             <li class="meta-item" data-ng-repeat="(key, value) in palette.meta track by $index" data-ng-attr-title="{{ key }}" data-ng-hide="value == 0">
 
-                                <img class="meta-icon" data-ng-src="resource/graphic/{{ key }}.png" src="" alt="" /> {{ value }}
+                                <img class="meta-icon" data-ng-src="resource/graphic/{{ key }}.png" src="" alt="" data-ng-cloak /> {{ value }}
 
                             </li>
 
@@ -205,7 +206,7 @@
                                       fill="{{  fill }}"></path>
                             </svg>
 
-                            <p data-ng-style="{ 'color': fill }" class="label">{{ item.label }}</p>
+                            <p data-ng-style="{ 'color': fill }" class="label" data-ng-cloak>{{ item.label }}</p>
 
                         </a>
 
@@ -220,18 +221,6 @@
                 <path d="M0,0 l140,0 0,140 -140,-60z" fill="#ffffff"></path>
 
             </svg>
-
-
-            <!-- Footer -->
-            <div id="footer">
-
-                <ul>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                </ul>
-
-            </div>
 
         </div>
 

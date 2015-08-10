@@ -1,6 +1,8 @@
 # colorhelper
 A simple web application to aid you in your color-seeking quest. 
 
+[Live demo](http://colorhelper.japmag.net)
+
 ### Main functionality
 * Generate random color palettes, using colourlovers.com API,
 * CRUD palettes,

@@ -64,6 +64,7 @@
 
                         <!-- Label -->
                         <li data-ng-repeat="item in menu"
+                            data-ng-if="item.subMenu.length"
                             class="{{ item.class }}">
                             {{ item.label }}
 

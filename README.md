@@ -14,11 +14,6 @@ A simple web application to aid you in your color-seeking quest.
 * Japanese (partial).
 
 ### TODO
-* ☑ ~~Colorpicker dialog for edit & add color~~,
-* ☑ ~~save using localstorage & shareable palettes,~~
-* ☑ ~~responsiveness~~,
-* ☑ ~~add menu and mini-settings,~~
-* ☑ ~~changeable name,~~
 * ☐ store palettes in database, allow for shareable palettes,
 * ☐ separate localizations into own files,
 * ☐ re-organize controllers, directives, services, factories, based on belonging rather than type.

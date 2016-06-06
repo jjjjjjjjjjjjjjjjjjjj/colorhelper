@@ -96,7 +96,7 @@ String.toLocaleString({
     },
     "ja": {
 
-        "%app.name": "カラーヘルパー", "colorhelper",
+        "%app.name": "カラーヘルパー",
         "%app.title": "カラーヘルパー、配色のインスピレーション",
         "%app.description": "カラーヘルパーを使うとちょうどいい配色を簡単に見つけることができます。",
         

@@ -96,48 +96,48 @@ String.toLocaleString({
     },
     "ja": {
 
-        "%app.name": "カラーヘルパー",
+        "%app.name": "カラーヘルパー", "colorhelper",
         "%app.title": "カラーヘルパー、配色のインスピレーション",
-        "%app.description": "カラーヘルパーを使うとちょうどいい配色を簡単で見つけることができます。",
-
-        "%status.api.title": "色をゲットしています．．．",
-        "%status.api.message": "APIからの結果を待ちます。",
-        "%status.api.error.message": "すみません、APIから結果を取る間エラーが起きてしまいました。",
-
+        "%app.description": "カラーヘルパーを使うとちょうどいい配色を簡単に見つけることができます。",
+        
+        "%status.api.title": "色を取得中...",
+        "%status.api.message": "APIからの結果を待っています...",
+        "%status.api.error.message": "すみません、APIから結果を取得中エラーが発生しました。",
+        
         "%error.general.title": "エラー",
-
+        
         "%menu.dev.github": "GitHubで見る",
-
+        
         "%menu.generate.blank": "ブランク",
         "%menu.generate.random": "ランダム",
-        "%menu.generate.popular": "ポピュラー",
-
+        "%menu.generate.popular": "人気",
+        
         "%meta.colourlovers": "この配色をcolourloversで見る",
-
+        
         "%palette.modified": "(変更された)",
-        "%palette.error.remove.message": "You need at least one color in the palette!",
-        "%palette.error.add.message": "The palette can contain seven colors at most!",
-
-        "%menu.add": "カラーをアッドする",
-        "%menu.new": "新しい配色",
+        "%palette.error.remove.message": "パレットには最低一色は必要です。",
+        "%palette.error.add.message": "パレットには最大7色まで追加できます。",
+        
+        "%menu.add": "色を追加",
+        "%menu.new": "新しいパレット",
         "%menu.save": "お気に入り",
-        "%menu.generate": "ジェネレート",
-        "%menu.favorites": "Favorites",
-        "%menu.dev": "Dev",
-        "%menu.dev.copyasarray": "Copy palette as array",
-        "%menu.settings": "Settings",
-        "%menu.settings.popular": "Palette preference",
-
-        "%remove.success": "カラーを一つ消しました。",
-
-        "%dialog.add.color": "色を選んでください。",
-        "%dialog.add.color.confirm": "アッドする",
-        "%dialog.cancel": "キャンセル",
-        "%dialog.edit.color": "色をエディット",
-        "%dialog.edit.name": "Edit name",
-        "%dialog.confirm": "確認する",
-
-        "%edit.title": "Klicka för att ändra titel"
+        "%menu.generate": "生成",
+        "%menu.favorites": "お気に入り",
+        "%menu.dev": "開発",
+        "%menu.dev.copyasarray": "パレットの配列をコピー",
+        "%menu.settings": "設定",
+        "%menu.settings.popular": "配色の設定",
+        
+        "%remove.success": "一色削除されました。",
+        
+        "%dialog.add.color": "色を選択",
+        "%dialog.add.color.confirm": "色を追加",　
+        "%dialog.cancel": "キャンセル",　
+        "%dialog.edit.color": "色を編集",　
+        "%dialog.edit.name": "名前を変更",　
+        "%dialog.confirm": "確認する",　
+        
+        "%edit.title": "クリックしてタイトルを変更"
 
     }
 });

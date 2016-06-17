@@ -11,7 +11,7 @@ A simple web application to aid you in your color-seeking quest.
 ### Supported languages
 * English,
 * Swedish,
-* Japanese (partial).
+* Japanese.
 
 ### TODO
 * ☐ store palettes in database, allow for shareable palettes,
